@@ -31,11 +31,14 @@ body
   color: base-font-colour
   line-height: 130%
   border-top: 10px solid #555
+  overflow-x: hidden
 
 #header
   background: base-colour
   height: 100px
   padding-top: 30px
+  overflow: hidden
+  width: 100%
 
   #header-row
     jsk-grid-row: 12
@@ -216,3 +219,57 @@ code
   margin-left: 1.5em
   li
     margin-bottom: 1.5em
+
+
+.document
+  margin-top: 2em
+  font-family: Droid Serif, serif
+  width: 770px
+  margin: 30px auto
+  text-shadow: 1px 0 0 rgba(255, 255, 255, 0.6)
+
+  h1, h2, h3, h4, h5, h6
+    font-weight: 300
+    line-height: 150%
+    color: #999
+    margin: 1em 0 0.5em
+    font-family: Lato, sans
+    text-shadow: 0 0 0 10px base-colour
+    position: relative
+    z-index: 2
+    overflow-x: hidden
+    whitespace: nowrap
+    margin-left: -60px
+    &:after, &:before
+      content: ""
+      display: inline-block
+      vertical-align: middle
+      height: 1px
+      width: 1000px
+      background: #ddd
+    &:before
+      width: 50px
+      margin-right: 10px
+    &:after
+      margin-left: 10px
+
+  h1
+    font-size: 2.6em
+  h2
+    font-size: 2.3em
+  h3
+    font-size: 2em
+  h4
+    font-size: 1.5em
+  h5
+    font-size: 1.2em
+    
+  p
+    margin: 0.5em 0 1.5em
+    line-height: 1.4em
+
+  blockquote
+    margin: 1em 1em 1em 2em
+    border-left: 5px solid #ddd
+    color: #999
+    padding: 0.5em 1em
