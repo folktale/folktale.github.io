@@ -1,0 +1,11 @@
+name: Folktale
+pygments: true
+source: ./source
+
+navigation:
+  - text: Overview
+    url: /index.html
+  - text: Documentation
+    url: /documentation
+  - text: Community
+    url: /community
