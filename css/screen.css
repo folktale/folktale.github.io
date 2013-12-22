@@ -312,3 +312,10 @@ code {
   font-size: 150%;
   vertical-align: middle;
 }
+.doge {
+  white-space: pre;
+  font-size: 2em;
+  color: #ffaa40;
+  font-family: "Comic Sans", cursive;
+  line-height: 150%;
+}
