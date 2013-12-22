@@ -1,6 +1,5 @@
 name: Folktale
 pygments: true
-source: ./source
 
 navigation:
   - text: Overview
