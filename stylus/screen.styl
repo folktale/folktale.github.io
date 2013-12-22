@@ -25,7 +25,7 @@ link-hover-colour = lighten(saturate(link-base-colour, 30%), 30%)
 
 // ## Layout ###########################################################
 body
-  font-size: 16px
+  font-size: 18px
   font-family: Lato, sans
   background: darken(base-colour, 5%)
   color: base-font-colour
@@ -35,7 +35,7 @@ body
 #header
   background: base-colour
   height: 100px
-  padding-top: 10px
+  padding-top: 30px
 
   #header-row
     jsk-grid-row: 12
@@ -57,7 +57,7 @@ body
     background: #222
     padding: 10px 100px
     color: #eee
-    transform: rotate(45deg) translateX(100px) translateY(-35px)
+    transform: rotate(45deg) translateX(110px) translateY(-35px)
     letter-spacing: 1px
     word-spacing: 3px
 
@@ -74,15 +74,18 @@ body
   border-top: 1px solid darken(base-colour, 10%)
   color: #999
   letter-spacing: 2px
+  font-size: 90%
 
 // ## Typography #######################################################
 #logo 
-  h1
+  a
+    @extends .undecorated
+  h1 a
     font-weight: 100
     color: #999
     font-size: 72px
     line-height: 100%
-  em
+  em a
     text-transform: uppercase
     color: #ccc
     font-size: 18px
@@ -117,6 +120,8 @@ body
   text-align: center
   padding: 30px 0 60px
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3)
+  &.narrow
+    padding: 0
   h2
     font-size: 42px
     line-height: 200%

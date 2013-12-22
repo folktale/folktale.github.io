@@ -97,11 +97,12 @@ a img {
 }
 .undecorated,
 #header .fork-ribbon,
+#logo a,
 #top-navigation a {
   text-decoration: none;
 }
 body {
-  font-size: 16px;
+  font-size: 18px;
   font-family: Lato, sans;
   background: #e7e7e7;
   color: #424242;
@@ -111,7 +112,7 @@ body {
 #header {
   background: #f3f3f3;
   height: 100px;
-  padding-top: 10px;
+  padding-top: 30px;
 }
 #header #header-row {
   display: block;
@@ -143,11 +144,11 @@ body {
   background: #222;
   padding: 10px 100px;
   color: #eee;
-  -webkit-transform: rotate(45deg) translateX(100px) translateY(-35px);
-  -moz-transform: rotate(45deg) translateX(100px) translateY(-35px);
-  -o-transform: rotate(45deg) translateX(100px) translateY(-35px);
-  -ms-transform: rotate(45deg) translateX(100px) translateY(-35px);
-  transform: rotate(45deg) translateX(100px) translateY(-35px);
+  -webkit-transform: rotate(45deg) translateX(110px) translateY(-35px);
+  -moz-transform: rotate(45deg) translateX(110px) translateY(-35px);
+  -o-transform: rotate(45deg) translateX(110px) translateY(-35px);
+  -ms-transform: rotate(45deg) translateX(110px) translateY(-35px);
+  transform: rotate(45deg) translateX(110px) translateY(-35px);
   letter-spacing: 1px;
   word-spacing: 3px;
 }
@@ -161,14 +162,15 @@ body {
   border-top: 1px solid #dbdbdb;
   color: #999;
   letter-spacing: 2px;
+  font-size: 90%;
 }
-#logo h1 {
+#logo h1 a {
   font-weight: 100;
   color: #999;
   font-size: 72px;
   line-height: 100%;
 }
-#logo em {
+#logo em a {
   text-transform: uppercase;
   color: #ccc;
   font-size: 18px;
@@ -204,6 +206,9 @@ body {
   text-align: center;
   padding: 30px 0 60px;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+}
+#hero-description.narrow {
+  padding: 0;
 }
 #hero-description h2 {
   font-size: 42px;

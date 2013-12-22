@@ -22,14 +22,14 @@
       <div id="header-container">
         <div id="header-row">
           <header id="logo">
-            <h1>Folktale</h1>
-            <em>JavaScript meets DRY</em>
+            <h1><a href="/">Folktale</a></h1>
+            <em><a href="/">JavaScript meets DRY</a></em>
           </header>
           <nav id="top-navigation">
             <ul>
               {% for link in site.navigation %}
                 {% assign current = nil %}
-                {% if page.url == link.url or page.group == link.text %}
+                {% if page.url == link.url or page.group == link.group %}
                   {% assign current = 'active' %}
                 {% endif %}
                 <li><a class="{{ current }}" href="{{ link.url }}">{{ link.text}}</a></li>

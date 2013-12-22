@@ -5,7 +5,7 @@ source: ./source
 navigation:
   - text: Overview
     url: /index.html
+    group: home
   - text: Documentation
-    url: /documentation
-  - text: Community
-    url: /community
+    url: /documentation/index.html
+    group: docs
