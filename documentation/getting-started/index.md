@@ -3,6 +3,10 @@ layout: document
 title: Getting Started
 ---
 
+Use numbered headers: True
+
+<!-- * * * -->
+
 This guide will cover everything you need to start using the Folktale project
 right away, from giving you a brief overview of the project, to installing it,
 to creating a simple example. Once you get the hang of things, the
@@ -18,7 +22,7 @@ cases.
 {:toc}
 
 
-## 1. So, what's Folktale anyways?
+## So, what's Folktale anyways?
 
 Folktale is a suite of libraries for allowing a particular style of functional
 programming in JavaScript. This style uses overtly generic abstractions to
@@ -36,7 +40,7 @@ reusable JavaScript components easier, by providing generic primitives and
 powerful combinators.
 
 
-## 2. Do I need to know advanced maths?
+## Do I need to know advanced maths?
 
 Short answer is **no**. You absolutely don't need to know any sort of advanced
 mathematics to use the Folktale libraries. 
@@ -47,7 +51,7 @@ extrapolate from the common use cases, and create new abstractions, it will
 help you tremendously to be familiar with these branches of mathematics.
 
 
-## 3. Okay, how can I use it?
+## Okay, how can I use it?
 
 Good, let's get down to the good parts!
 
@@ -82,7 +86,7 @@ libraries. Don't worry, installing Node is pretty easy:
 > [Chris Lea's PPA](https://launchpad.net/~chris-lea/+archive/node.js/).
 
 
-## 4. Hello, world.
+## Hello, world.
 
 Now that you have Node, we can get down to actually using the library. For
 this, let's create a new directory where we'll install the library:
@@ -130,7 +134,7 @@ emphatic(hello, 100)
 {% endhighlight %}
 
 
-## 5. What about the Browser?
+## What about the Browser?
 
 Running in the browser takes just a little bit more of effort. To do so, you'll
 first need the [Browserify][] too, which converts modules using the Node
@@ -184,7 +188,7 @@ By opening the page on your webbrowser, you should see 10 exclamations being
 added to the page.
 
 
-## 6. What else do I get?
+## What else do I get?
 
 Folktale is a large collection of base libraries, and still largely a work in
 progress, but there's a lot that is already done and can be used today!
