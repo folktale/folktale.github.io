@@ -185,16 +185,16 @@ added to the page.
 Folktale is a large collection of base libraries, and still largely a work in
 progress, but there's a lot that is already done and can be used today!
 
-  - Safe optional value (replaces nullable types): [Maybe monad][].
-  - Disjunction type (commonly encodes errors): [Either monad][].
-  - Disjunction with failure aggregation: [Validation applicative][].
-  - Asynchronous values and computations: [Future monad][].
-  - [Fast immutable List, Vector, Set and Map][persistent].
-  - [Common and useful combinators from Lambda Calculus][lambda].
-  - [Common and useful monadic combinators][monads].
+ -  Safe optional value (replaces nullable types): [Maybe monad][].
+ -  Disjunction type (commonly encodes errors): [Either monad][].
+ -  Disjunction with failure aggregation: [Validation applicative][].
+ -  Asynchronous values and computations: [Future monad][].
+ -  [Fast immutable List, Vector, Set and Map][persistent].
+ -  [Common and useful combinators from Lambda Calculus][lambda].
+ -  [Common and useful monadic combinators][monads].
 
 Each of them are fairly broad concepts. The recommended way of getting familiar
-with them is working through the [Folktale By Example][by-example] guide, which
+with them is working through the [Folktale By Example][] guide, which
 will explain each concept through a series of real world use cases.
 
 [Maybe monad]: https://github.com/folktale/monads.maybe
