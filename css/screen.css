@@ -466,3 +466,9 @@ code {
 .document ol li {
   margin-bottom: 1em;
 }
+.document strong {
+  font-weight: bold;
+}
+.document em {
+  font-style: italic;
+}
