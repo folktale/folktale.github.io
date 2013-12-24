@@ -199,19 +199,43 @@ Similar to `partial`, but specialises the arguments from right to left.
 
 ## `uncurry(f)(as)`
 
-Transforms a curried function into one that takes all arguments as an `Array`.
+Transforms a variadic function into one that takes all arguments as an `Array`.
 
-    (a1 → a2 → ... → aN → b) → #[a1, a2, ..., aN] → b
+    (a1, a2, ..., aN → b) → #[a1, a2, ..., aN] → b
 {:lang=oblige}
+
+Usually useful when composing functions that need to take more than one
+argument. This allows one function to return a list of the arguments, and the
+subsequent function to be applied to the list, rather than a single argument.
+
+{% highlight js %}
+function vector(x, y) {
+  return { x: x, y: y }
+}
+function opposites(x) {
+  return [x, -x]
+}
+
+compose(uncurry(vector), opposites)(2)  // { x: 2, y: -2 }
+{% endhighlight %}
 
 
 ## `uncurryBind(f)(as)`
 
-Transforms a curried function into one that takes all arguments (including
+Transforms a variadic function into one that takes all arguments (including
 `this`) as an `Array`.
 
-    (c:Object) => (a1 → a2 → ... → aN → b) → #[c, a1, a2, ..., aN] → b
+    (c:Object) => (a1, a2, ..., aN → b) → #[c, a1, a2, ..., aN] → b
 {:lang=oblige}
+
+Like `uncurry`, but more useful for converting methods into plain functions.
+
+{% highlight js %}
+var slice = uncurryBind(Array.prototype.slice)
+
+slice(['bar', 1])       // => 'ar'
+slice(['bar', 1, 2])    // => 'a'
+{% endhighlight %}
 
 
 ## `upon(f)(g)(a)(b)`
@@ -220,6 +244,24 @@ Applies an unary function to both arguments of a binary function.
 
     (b → b → c) → (a → b) → a → a → c
 {:lang=oblige}
+
+Generally useful for transforming things in higher-order operations that take a
+binary function (e.g.: sorting, folding), before applying the function.
+
+{% highlight js %}
+function first(a) {
+  return a[0]
+}
+function compare(a, b) {
+  return a < b?  -1
+  :      a > b?   1
+  :      /* _ */  0
+}
+
+[[3, 'foo'], [1, 'bar'], [2, 'baz']].sort(upon(compare, first))
+// => [[1, 'bar'], [2, 'baz'], [3, 'foo']]
+{% endhighlight %}
+
 
 <!-- Links -->
 [Functor]: https://github.com/fantasyland/fantasy-land#functor
