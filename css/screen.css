@@ -454,6 +454,9 @@ code {
 .document .highlight pre {
   margin: 0;
 }
+.document .highlight pre code {
+  color: #424242;
+}
 .document ol {
   list-style: decimal;
 }
