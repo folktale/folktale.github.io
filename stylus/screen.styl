@@ -344,7 +344,14 @@ code
     li p:last-of-type
       margin-bottom: 0
 
-  .maruku_toc a code
+  .maruku_toc
+    ul
+      margin: 0 0 0 1em
+    li
+      margin: 0
+    .maruku_section_number
+      color: #aaa
+    a code
       color: inherit
 
   pre code.oblige
@@ -363,3 +370,25 @@ code
       text-transform: uppercase
       font-size: 90%
       text-shadow: 1px 0 0 #fff
+
+  .summary
+    @extend .white-box
+    font-size: 80%
+    list-style: none
+    float: left
+    margin: 0 2em 2em 0
+    color: #999
+    li
+      border-bottom: 1px solid #eee
+      margin-bottom: 0.5em
+      &:last-child
+        border: 0
+      strong
+        display: inline-block
+        width: 150px
+        color: #777
+
+  .description-summary:after
+    clear: both
+
+

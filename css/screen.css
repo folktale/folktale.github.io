@@ -104,7 +104,8 @@ a img {
 .white-box,
 .document blockquote,
 .document .highlight,
-.document pre code.oblige {
+.document pre code.oblige,
+.document .summary {
   background: #f9f9f9;
   border: 1px solid #e9e9e9;
   padding: 1em;
@@ -508,6 +509,15 @@ code {
 .document .footnotes li p:last-of-type {
   margin-bottom: 0;
 }
+.document .maruku_toc ul {
+  margin: 0 0 0 1em;
+}
+.document .maruku_toc li {
+  margin: 0;
+}
+.document .maruku_toc .maruku_section_number {
+  color: #aaa;
+}
 .document .maruku_toc a code {
   color: inherit;
 }
@@ -527,4 +537,26 @@ code {
   text-transform: uppercase;
   font-size: 90%;
   text-shadow: 1px 0 0 #fff;
+}
+.document .summary {
+  font-size: 80%;
+  list-style: none;
+  float: left;
+  margin: 0 2em 2em 0;
+  color: #999;
+}
+.document .summary li {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 0.5em;
+}
+.document .summary li:last-child {
+  border: 0;
+}
+.document .summary li strong {
+  display: inline-block;
+  width: 150px;
+  color: #777;
+}
+.document .description-summary:after {
+  clear: both;
 }

@@ -5,10 +5,12 @@ title: Core › Lambda
 
 Use numbered headers: True
 
-
-> -  **Restrictions**: ECMAScript 5
-> -  **Stability**: Experimental
-> -  **Module**: [core.lambda](https://npmjs.org/package/core.lambda)
+ -  **Restrictions:** ECMAScript 5
+ -  **API Stability:** Experimental
+ -  **Module:** [core.lambda](https://npmjs.org/package/core.lambda)
+ -  **Version:** 0.2.0
+ -  **Licence:** MIT
+{.summary}
 
 The `core.lambda` module provides essential combinators and higher-order
 functions derived from Lambda Calculus. All functions are curried to make them
