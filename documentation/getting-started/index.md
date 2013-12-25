@@ -94,14 +94,14 @@ this, let's create a new directory where we'll install the library:
 {% highlight sh %}
 ~ mkdir ~/folktale-hello-world
 ~ cd ~/folktale-hello-world
-~ npm install data.persistent
+~ npm install data.maybe
 {% endhighlight %}
 
 The `npm install` command will grab the library for you. In this case, the
-library is `data.persistent`, which provides fast immutable data structures to
-make your life easier. It should only take a few seconds to get everything
-installed, and if all goes well, you'll have a `node_modules` folder with all
-the stuff.
+library is `data.maybe`, which provides a data structure for modelling values
+that might not exist (like nulls, but safer). It should only take a few seconds
+to get everything installed, and if all goes well, you'll have a `node_modules`
+folder with all the stuff.
 
 Now, run `node` to get dropped into a [Read-Eval-Print-Loop][REPL], which will
 allow us to play around with the library interactively. Once in the REPL, you
@@ -111,26 +111,27 @@ can load the library:
 
 {% highlight js %}
 // We load the library by "require"-ing it
-var persistent = require('data.persistent')
+var Maybe = require('data.maybe')
 
-// And create an alias for the `List` object
-var List = persistent.List
-
-// Now, we create an immutable List with two elements
-var hello = new List('Hello', 'World')
-
-// And an infinite (lazy) list of exclamations
-var exclamation = persistent.repeat('!')
-
-// We then provide a function that'll make emphatic remarks
-function emphatic(what, howMuch) {
-  return what.concat(persistent.take(howMuch, exclamation))
+// Returns Maybe.Just(x) if some `x` passes the predicate test
+// Otherwise returns Maybe.Nothing()
+function find(predicate, xs) {
+  return xs.reduce(function(result, x) {
+    return result.orElse(function() {
+      return predicate(x)?    Maybe.Just(x)
+      :      /* otherwise */  Maybe.Nothing()
+    })
+  }, Maybe.Nothing())
 }
 
-// And finally, display an emphatic Hello World
-emphatic(hello, 3)
-emphatic(hello, 10)
-emphatic(hello, 100)
+
+var numbers = [1, 2, 3, 4, 5]
+
+var anyGreaterThan2 = find(function(a) { return a > 2 }, numbers)
+// => Maybe.Just(3)
+
+var anyGreaterThan8 = find(function(a) { return a > 8 }, numbers)
+// => Maybe.Nothing
 {% endhighlight %}
 
 
@@ -148,19 +149,17 @@ $ npm install browserify
 {% endhighlight %}
 
 Since Browserify has quite a bit more of dependencies than our
-`data.persistent` library, it'll take a few seconds to fully install it. Once
+`data.maybe` library, it'll take a few seconds to fully install it. Once
 you've got Browserify installed, you'll want to create your module using the
 Node format. So, create a `hello.js` with the following content:
 
 {% highlight js %}
-// We load the data.persistent libraries, just like in Node
-var persistent = require('data.persistent')
+// We load the data.maybe library, just like in Node
+var Maybe = require('data.maybe')
 
-// Create a list of 10 exclamations
-var exclamations = persistent.replicate(10, "!")
-
-// And display it on the browser document
-document.body.appendChild(document.createTextNode(exclamations.toString()))
+Maybe.Just("Hello, world!").chain(function(value) {
+  document.body.appendChild(document.createTextNode(value))
+})
 {% endhighlight %}
 
 To compile this file with Browserify, you run the Browserify command giving the
@@ -184,8 +183,8 @@ And finally, include the `bundle.js` file in your webpage:
 </html>
 {% endhighlight %}
 
-By opening the page on your webbrowser, you should see 10 exclamations being
-added to the page.
+By opening the page on your webbrowser, you should see `Hello, World!` added to
+the page.
 
 
 ## What else do I get?
@@ -197,7 +196,6 @@ progress, but there's a lot that is already done and can be used today!
  -  Disjunction type (commonly encodes errors): [Either monad][].
  -  Disjunction with failure aggregation: [Validation applicative][].
  -  Asynchronous values and computations: [Future monad][].
- -  [Fast immutable List, Vector, Set and Map][persistent].
  -  [Common and useful combinators from Lambda Calculus][lambda].
  -  [Common and useful monadic combinators][monads].
 
@@ -209,6 +207,5 @@ will explain each concept through a series of real world use cases.
 [Either monad]: https://github.com/folktale/monads.either
 [Validation applicative]: https://github.com/folktale/applicatives.validation
 [Future monad]: https://github.com/folktale/monads.future
-[persistent]: https://github.com/folktale/data.persistent
 [lambda]: https://github.com/folktale/core.lambda
 [monads]: https://github.com/folktale/control.monads

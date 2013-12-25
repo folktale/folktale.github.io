@@ -28,10 +28,6 @@ operations, which are likely to be used thorough most programs.
 Provides functional (persistent and immutable) data structures for representing
 program data.
 
- -  [Persistent](data/persistent.html): Fast persistent data structures from
-    ClojureScript by way of [Mori][], with Monad, Functor and Applicative
-    instances, and curried operations.
-   
  -  [Maybe](data/maybe.html): Safe optional values for modelling computations
     that may fail, or values that might not be available.
    
