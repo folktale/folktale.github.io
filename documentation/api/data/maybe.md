@@ -271,7 +271,7 @@ Maybe.Nothing().get()   // => TypeError: Can't extract the value of a Nothing
 {% endhighlight %}
 
 
-#### `Maybe:get-or-else()       {#get-or-else}
+#### `Maybe:get-or-else()`       {#get-or-else}
 
 Extracts the value out of the `Maybe(a)` structure. If there's no value,
 returns the given default.
