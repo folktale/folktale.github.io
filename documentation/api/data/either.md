@@ -287,3 +287,79 @@ function k(a) { return function(b) { return a }}
 Either.Right(1).orElse(k(Either.Right(2)))      // => Right(1)
 Either.Left(1).orElse(k(Either.Right(2)))       // => Right(2)
 {% endhighlight %}
+
+
+#### `Either:merge()`
+
+Returns the value of whichever side of the disjunction.
+
+    @Either(a, a) => Unit → a
+{:lang=oblige}
+
+{% highlight js %}
+Either.Right(1).merge()         // => 1
+Either.Left(1).merge()          // => 1
+{% endhighlight %}
+
+
+### Folds and Extended Transformations
+
+#### `Either:fold(f, g)`
+
+Catamorphism. Applies `f` to the `Left`-tagged value, and `g` to the
+`Right`-tagged value, depending on which value is present.
+
+    @Either(a, b) => (a → c) → (b → c) → c
+{:lang=oblige}
+
+{% highlight js %}
+function inc(a){ return a + 1 }
+function dec(a){ return a - 1 }
+
+Either.Right(1).fold(dec, inc)          // => 2
+Either.Left(2).fold(dec, inc)           // => 1
+{% endhighlight %}
+
+
+#### `Either:swap()`
+
+Swaps the disjunction values.
+
+    @Either(a, b) => Unit → Either(a, a)
+{:lang=oblige}
+
+{% highlight js %}
+Either.Right(1).swap()          // => Left(1)
+Either.Left(1).swap()           // => Right(1)
+{% endhighlight %}
+
+
+#### `Either:bimap(f, g)`
+
+Transforms both sides of a disjunction.
+
+    @Either(a, b) => (a → c) → (b → d) → Either(c, d)
+{:lang=oblige}
+
+{% highlight js %}
+function inc(a){ return a + 1 }
+function dec(a){ return a - 1 }
+
+Either.Right(2).map(inc, dec)   // => Right(1)
+Either.Left(2).map(inc, dec)    // => Left(3)
+{% endhighlight %}
+
+
+#### `Either:left-map(f)`
+
+Transforms a `Left`-tagged value using an unary function.
+
+    @Either(a, b) => (a → c) → Either(c, b)
+{:lang=oblige}
+
+{% highlight js %}
+function duplicate(a){ return [a, a] }
+
+Either.Right(1).leftMap(duplicate)              // => Right(1)
+Either.Left(1).leftMap(duplicate)               // => Left([1, 1])
+{% endhighlight %}
