@@ -7,7 +7,7 @@ Use numbered headers: True
 
  -  **Restrictions:** ECMAScript 5
  -  **API Stability:** Stable
- -  **Module:** [data.either](https://npmjs.org/package/data.either)
+ -  **Module:** [data.validation](https://npmjs.org/package/data.validation)
  -  **Version:** 1.0.0
  -  **Licence:** MIT
 {.summary}
@@ -18,6 +18,53 @@ failures. Not only the `Validation` provides a better terminology for
 working with such cases (`Failure` and `Success` versus `Left` and
 `Right`), it also allows one to easily aggregate failures and
 successes as an Applicative Functor.
+
+{% highlight js %}
+var Validation = require('data.validation')
+var Success = Validation.Success
+var Failure = Validation.Failure
+
+// Functions that need to do validation return one of two cases:
+//
+//  -  A Success with the value they want to propagate.
+//  -  Some value representing one or more failures, using a semigroup.
+//     Lists are the more straight-forward semigroup, so we just use them
+//     here.
+function isPasswordLongEnough(a) {
+  return a.length > 6?    Success(a)
+  :      /* otherwise */  Failure(["Password must have more than 6 characters"])
+}
+
+function isPasswordStrongEnough(a) {
+  return /[\W]/.test(a)?  Success(a)
+  :      /* otherwise */  Failure(["Password must contain special characters"])
+}
+
+// To aggregate the failures, we start with a Success case containing
+// a curried function of arity N (where N is the number of validations),
+// and we just use an `.ap`-ply chain to get either the value our Success
+// function ultimately returns, or the aggregated failures.
+function isPasswordValid(a) {
+  return Success(function(x){ return function(y){ return a }})
+           .ap(isPasswordLongEnough(a))
+           .ap(isPasswordStrongEnough(a))
+}
+
+
+isPasswordValid("foo")
+// => Validation.Failure([
+//      "Password must have more than 6 characters.",
+//      "Password must contain special characters."
+//    ])
+
+isPasswordValid("rosesarered")
+// => Validation.Failure([
+//      "Password must contain special characters."
+//    ])
+
+isPasswordValid("rosesarered$andstuff")
+// => Validation.Success("rosesarered$andstuff")
+{% endhighlight %}
 
 
 # Table of Contents
@@ -45,13 +92,8 @@ Constructs a new `Validation(a, b)` structure holding a `Failure`-tagged value.
 {:lang=oblige}
 
 {% highlight js %}
-function read(path) {
-  return exists(path)?     Validation.Success(fread(path))
-  :      /* otherwise */   Validation.Failure("Non-existing file: " + path)
-}
-
-read("/foo.txt")            // => Success("foo's contents")
-read("/non/existent.txt)    // => Failure("Non-existing file: /non/existent.txt")
+Validation.Failure([1])           // => Failure([1])
+Validation.Failure([null])        // => Failure([null])
 {% endhighlight %}
 
 

@@ -23,7 +23,37 @@ of the cases at any given time. The projections are, none the less, biased for
 the `Right` case, so a common use case for this structure is to hold the results
 of computations that may fail, when you want to store additional information on
 the failure (instead of throwing an exception).
- 
+
+{% highlight js %}
+// Returns the contents of the file at `path`, if it exists.
+//
+//  read : String -> Either(Error, String)
+function read(path) {
+  return exists(path)?     Either.Right(fread(path))
+  :      /* otherwise */   Either.Left("Non-existing file: " + path)
+}
+
+var intro = read('intro.txt')  // => Right(...)
+var outro = read('outro.txt')  // => Right(...)
+var nope  = read('nope.txt')   // => Left("Non-existing file: nope.txt")
+
+// We can concatenate things without knowing if they exist at all, and
+// failures are handled for us
+intro.chain(function(a) {
+  outro.map(function(b) {
+    return a + b
+  })
+}).orElse(logFailure)
+// => Right(...)
+
+intro.chain(function(a) {
+  return nope.map(function(b) {
+    return a + b
+  })
+})
+// => Left("Non-existing file: nope.txt")
+{% endhighlight %}
+
 Furthermore, the values of `Either(a, b)` can be combined and manipulated by
 using the expressive monadic operations. This allows safely sequencing
 operations that may fail, and safely composing values that you don't know
@@ -66,13 +96,8 @@ Constructs a new `Either(a, b)` structure holding a `Left`-tagged value.
 This usually represents a failure, due to the right-bias of this structure.
 
 {% highlight js %}
-function read(path) {
-  return exists(path)?     Either.Right(fread(path))
-  :      /* otherwise */   Either.Left("Non-existing file: " + path)
-}
-
-read("/foo.txt")                // => Right("foo's contents")
-read("/non/existent.txt)        // => Left("Non-existing file: /non/existent.txt")
+Either.Left(1)          // => Left(1)
+Either.Left(null)       // => Left(null)
 {% endhighlight %}
 
 

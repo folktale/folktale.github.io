@@ -34,6 +34,47 @@ may fail to provide a value, such as `collection.find(predicate)`. These
 computations can safely return a `Maybe(a)` value, even if the collection
 contains nullable values.
 
+{% highlight js %}
+var Maybe = require('data.maybe')
+
+// We can have a function that can safely find values in an array.
+// Where by safe we mean that we can always know whether it succeeded
+// or failed, even if the array may contain null or undefined.
+//
+// find : [a], (a -> Bool) -> Maybe(a)
+function find(collection, predicate) {
+  for (var i = 0; i < collection.length; ++i) {
+    var item = collection[i]
+    if (predicate(item))  return Maybe.Just(item)
+  }
+  return Maybe.Nothing()
+}
+
+var numbers = [-2, -1, 0, 1, 2]
+var a = find(numbers, function(a){ return a > 5 })
+var b = find(numbers, function(a){ return a === 0 })
+
+// Call a function only if both a and b
+// have values (sequencing)
+a.chain(function(x) {
+  return b.chain(function(y) {
+    doSomething(x, y)
+  })
+})
+
+// Transform values only if they're available:
+a.map(function(x){ return x + 1 })
+// => Maybe.Nothing
+b.map(function(x){ return x + 1 })
+// => Maybe.Just(1)
+
+// Use a default value if no value is present
+a.orElse(function(){ return Maybe.Just(-1) })
+// => Maybe.Just(-1)
+b.orElse(function(){ return Maybe.Just(-1) })
+// => Maybe.Just(0)
+{% endhighlight %}
+
 Furthermore, the structure provides instances for the `Functor`, `Applicative`
 and `Monad` algebraic structures, allowing it to be combined and manipulated
 using expressive and generic monadic computations. This allows safely
@@ -79,13 +120,7 @@ Constructs a new `Maybe(a)` structure for an absent value.
 The Nothing case represents a failure.
 
 {% highlight js %}
-function head(xs) {
-  return xs.length === 0?  Maybe.Nothing()
-  :      /* otherwise */   Maybe.Just(xs[0])
-}
-
-head([])                // => Nothing
-head([undefined])       // => Just(undefined)
+Maybe.Nothing()         // => Nothingx
 {% endhighlight %}
 
 
