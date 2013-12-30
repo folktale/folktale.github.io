@@ -222,7 +222,7 @@ Either.Left(1).map(inc)         // => Left(1)
 
 #### `Either:chain(f)`
 
-Transforms the `Right`-tagged value of the `Maybe(a)` structure using an unary
+Transforms the `Right`-tagged value of the `Either(a, b)` structure using an unary
 function yielding a monad of the same type.
 
     @Either(a, b) => (b → Either(a, c)) → Either(a, c)
