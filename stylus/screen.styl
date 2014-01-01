@@ -35,7 +35,6 @@ body
   color: base-font-colour
   line-height: 130%
   border-top: 10px solid #555
-  overflow-x: hidden
 
 #header
   background: base-colour
@@ -56,17 +55,26 @@ body
   #top-navigation
     jsk-grid-column: 8
 
-  .fork-ribbon
-    @extends .undecorated
+  .ribbon-container
     position: absolute
     top: 0
     right: 0
-    background: #222
-    padding: 10px 100px
-    color: #eee
-    transform: rotate(45deg) translateX(110px) translateY(-35px)
-    letter-spacing: 1px
-    word-spacing: 3px
+    width: 200px
+    height: 200px
+    overflow: hidden
+
+    .fork-ribbon
+      @extends .undecorated
+      position: absolute
+      top: 0
+      right: 0
+      background: #222
+      padding: 10px 100px
+      color: #eee
+      transform: rotate(45deg) translateX(110px) translateY(-35px)
+      letter-spacing: 1px
+      word-spacing: 3px
+      white-space: nowrap
 
 #content
   background: base-colour

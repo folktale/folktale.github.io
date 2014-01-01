@@ -96,7 +96,7 @@ a img {
   margin: 0 auto;
 }
 .undecorated,
-#header .fork-ribbon,
+#header .ribbon-container .fork-ribbon,
 #logo a,
 #top-navigation a {
   text-decoration: none;
@@ -117,7 +117,6 @@ body {
   color: #424242;
   line-height: 130%;
   border-top: 10px solid #555;
-  overflow-x: hidden;
 }
 #header {
   background: #f3f3f3;
@@ -149,7 +148,15 @@ body {
   *width: 64.53125000000001%;
   *margin: 0 0.9895833333333331%;
 }
-#header .fork-ribbon {
+#header .ribbon-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+#header .ribbon-container .fork-ribbon {
   position: absolute;
   top: 0;
   right: 0;
@@ -163,6 +170,7 @@ body {
   transform: rotate(45deg) translateX(110px) translateY(-35px);
   letter-spacing: 1px;
   word-spacing: 3px;
+  white-space: nowrap;
 }
 #content {
   background: #f3f3f3;
