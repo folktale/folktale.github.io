@@ -120,7 +120,7 @@ Constructs a new `Maybe(a)` structure for an absent value.
 The Nothing case represents a failure.
 
 {% highlight js %}
-Maybe.Nothing()         // => Nothingx
+Maybe.Nothing()         // => Nothing
 {% endhighlight %}
 
 
