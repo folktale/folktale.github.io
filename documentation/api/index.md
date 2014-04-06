@@ -50,14 +50,3 @@ Provides operations for control-flow.
 
  -  [Monads](control/monads.html): Common monad combinators and sequencing
     operations.
-    
-    
-
-    
-
-
-
-
-
-
-
