@@ -19,7 +19,7 @@ might map better to a particular problem.
 Provides the most basic and essential building blocks and compositional
 operations, which are likely to be used thorough most programs.
 
- -  [Lambda](core/lambda.html): Essential functional combinators and
+ -  [Lambda](/core.lambda): Essential functional combinators and
     higher-order functions derived from Lambda Calculus.
    
    
@@ -28,17 +28,17 @@ operations, which are likely to be used thorough most programs.
 Provides functional (persistent and immutable) data structures for representing
 program data.
 
- -  [Maybe](data/maybe.html): Safe optional values for modelling computations
+ -  [Maybe](/data.maybe): Safe optional values for modelling computations
     that may fail, or values that might not be available.
    
- -  [Either](data/either.html): Right-biased disjunctions, commonly used for
+ -  [Either](/data.either): Right-biased disjunctions, commonly used for
     modelling computations that may fail with additional information about the
     failure.
 
- -  [Validation](data/validation.html): A disjunction for validating inputs and
+ -  [Validation](/data.validation): A disjunction for validating inputs and
     aggregating failures, isomorphic to Either.
    
- -  [Future](data/future.html): A structure for capturing the effects of
+ -  [Future](/data.future): A structure for capturing the effects of
     time-dependent values (asynchronous computations, latency, etc).
     
 [Mori]: https://github.com/swannodette/mori
