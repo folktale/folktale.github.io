@@ -48,5 +48,5 @@ program data.
 
 Provides operations for control-flow.
 
- -  [Monads](/control.monads.html): Common monad combinators and sequencing
+ -  [Monads](/control.monads): Common monad combinators and sequencing
     operations.
