@@ -19,7 +19,7 @@ concerns, please contact the [community staff](/community/staff.html).
 ## Community guidelines
 
  -  [Code of Conduct](/community/code-of-conduct.html)
-
+ -  [How to contribute to Folktale](/community/contributing.html)
 
 
 
