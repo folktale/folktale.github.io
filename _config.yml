@@ -8,3 +8,6 @@ navigation:
   - text: Documentation
     url: /documentation/index.html
     group: docs
+  - text: Community
+    url: /community/index.html
+    group: community
