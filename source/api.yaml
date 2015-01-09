@@ -449,6 +449,292 @@
           synopsis: |
             Returns the internal ``[[Class]]`` of the object.
 
-        
+    # --
+    - type: module
+      name: check
+      meta:
+        Stability: 1 - Experimental
+        Portability: Portable
+        Version: 0.1.0
+        NPM name: "``core.check``"
+        Repository: https://github.com/folktale/core.check
+        Bug Tracker: https://github.com/folktale/core.check/issues
+      synopsis: >-
+        Interface checking for JS values.
+      platform: ECMAScript 5
+      members:
+        - type: class
+          category: Types and structures
+          name: Violation
+          signature: |
+            type Violation = Tag(String, Any)
+                           | Equality(Any, Any)
+                           | Identity(Any, Any)
+                           | Any(Array<Any>)
+                           | All(Array<Any>)
 
-        
+            implements
+              Equality, Extractor, Reflect, Cata, Semigroup, ToString
+          synopsis: >-
+            Represents a violation of an interface's constraint.
+          members:
+            - type: attribute
+              category: Comparison and testing
+              name: isTag
+              signature: |
+                @Violation => Boolean
+              synopsis: |
+                ``true`` is the Violation has a ``Tag`` tag.
+
+            - type: attribute
+              category: Comparison and testing
+              name: isEquality
+              signature: |
+                @Violation => Boolean
+              synopsis: |
+                ``true`` is the Violation has an ``Equality`` tag.
+
+            - type: attribute
+              category: Comparison and testing
+              name: isIdentity
+              signature: |
+                @Violation => Boolean
+              synopsis: |
+                ``true`` is the Violation has an ``Identity`` tag.
+
+            - type: attribute
+              category: Comparison and testing
+              name: isAny
+              signature: |
+                @Violation => Boolean
+              synopsis: |
+                ``true`` is the Violation has an ``Any`` tag.
+
+            - type: attribute
+              category: Comparison and testing
+              name: isAll
+              signature: |
+                @Violation => Boolean
+              synopsis: |
+                ``true`` is the Violation has an ``All`` tag.
+
+            - type: method
+              category: Comparison and testing
+              name: equals
+              header: equals(aViolation)
+              signature: |
+                @Violation => Violation → Boolean
+              meta:
+                returns: >-
+                  ``true`` if both Violations have the same contents (by reference equality).
+
+            - type: method
+              category: Combining
+              name: concat
+              header: concat(aViolation)
+              signature: |
+                @Violation => Violation → Boolean
+              meta:
+                returns: >-
+                  A Violation with the contents combined.
+              synopsis: >-
+                Combines the contents of two Violations.
+
+            - type: method
+              category: Converting
+              name: toString
+              header: toString()
+              signature: |
+                @Violation => Violation → Boolean
+              meta:
+                returns: A textual representation of the Violation.
+
+            - type: method
+              category: Transforming
+              name: cata
+              header: cata(aPattern)
+              signature: |
+                @Violation => { r | Pattern } → β
+                where type Pattern {
+                  Tag: (String, Any) → β,
+                  Equality: (Any, Any) → β,
+                  Identity: (Any, Any) → β,
+                  Any: Array<Any> → β,
+                  All: Array<Any> → β
+                }
+              meta:
+                returns: The result of applying the right transformation to the Violation.
+              synopsis: |
+                Provides a crude form of pattern matching over the Violation ADT. Since
+                Violation also implements the Extractor interface, you may choose to
+                use the Sparkler Sweet.js macro instead for a more powerful form of
+                pattern matching.
+                
+        - type: function
+          category: Primitive validations
+          name: Null
+          header: Null(aValue)
+          signature: |
+            Any → Validation<Violation, Any>
+          synopsis: >-
+            An interface that matches only ``null`` values.
+
+        - type: function
+          category: Primitive validations
+          name: Undefined
+          header: Undefined(aValue)
+          signature: |
+            Any → Validation<Violation, Any>
+          synopsis: >-
+            An interface that matches only ``undefined`` values.
+
+        - type: function
+          category: Primitive validations
+          name: Boolean
+          header: Boolean(aValue)
+          signature: |
+            Any → Validation<Violation, Any>
+          synopsis: >-
+            An interface that matches only ``Boolean`` values.
+
+        - type: function
+          category: Primitive validations
+          name: Number
+          header: Number(aValue)
+          signature: |
+            Any → Validation<Violation, Any>
+          synopsis: >-
+            An interface that matches only ``Number`` values.
+
+        - type: function
+          category: Primitive validations
+          name: String
+          header: String(aValue)
+          signature: |
+            Any → Validation<Violation, Any>
+          synopsis: >-
+            An interface that matches only ``String`` values.
+
+        - type: function
+          category: Primitive validations
+          name: Function
+          header: Function(aValue)
+          signature: |
+            Any → Validation<Violation, Any>
+          synopsis: >-
+            An interface that matches only ``Function`` values.
+
+        - type: function
+          category: Primitive validations
+          name: Array
+          header: Array(aValue)
+          signature: |
+            Any → Validation<Violation, Any>
+          synopsis: >-
+            An interface that matches only ``Array`` values.
+
+        - type: function
+          category: Primitive validations
+          name: Object
+          header: Object(aValue)
+          signature: |
+            Any → Validation<Violation, Any>
+          synopsis: >-
+            An interface that matches only ``Object`` values.
+
+        - type: function
+          category: Primitive validations
+          name: Any
+          header: Any(aValue)
+          signature: |
+            Any → Validation<Violation, Any>
+          synopsis: >-
+            An interface that matches any values.
+
+        # Dependent validations
+        - type: function
+          category: Dependent validations
+          name: Value
+          header: Value(expected)
+          signature: |
+            α → (α → Validation<Violation, α>)
+          synopsis: >-
+            An interface that matches the given value by structural equality.
+
+        - type: function
+          category: Dependent validations
+          name: Identity
+          header: Identity(expected)
+          signature: |
+            α → (α → Validation<Violation, α>)
+          synopsis: >-
+            An interface that matches the given value by reference equality.
+
+        # Higher-order validations
+        - type: function
+          category: Higher-order validations
+          name: Or
+          header: Or(interfaces)
+          signature: |
+            Array<α → Validation<Violation, α>> → α → Validation<Violation, α>
+          meta:
+            returns: >-
+              An interface that matches any of the given interfaces.
+
+        - type: function
+          category: Higher-order validations
+          name: And
+          header: And(interfaces)
+          signature: |
+            Array<α → Validation<Violation, α>> → α → Validation<Violation, α>
+          meta:
+            returns: >-
+              An interface that matches only if all of the given interfaces match.
+
+        - type: function
+          category: Higher-order validations
+          name: Seq
+          header: Seq(interfaces)
+          signature: |
+            Array< α₁ → Validation<Violation, α₁>
+                 , α₂ → Validation<Violation, α₂>
+                 , ...
+                 , αₙ → Validation<Violation, αₙ>>
+            → Array<α₁, α₂, ..., αₙ>
+            → Validation<Violation, Array<α₁, α₂, ..., αₙ>>
+          meta:
+            returns: >-
+              An interface that matches an N-Tuple with the given interfaces.
+
+        - type: function
+          category: Higher-order validations
+          name: ArrayOf
+          header: ArrayOf(interface)
+          signature: |
+            (α → Validation<Violation, α>) → α → Validation<Violation, α>
+          meta:
+            returns: >-
+              An interface that matches an Array with values matching the given interface.
+
+        - type: function
+          category: Higher-order validations
+          name: ObjectOf
+          header: ObjectOf(aPattern)
+          signature: |
+            Object<Validation<Violation, Any>> → Object<Any> → Validation<Violation, Object<Any>>
+          meta:
+            returns: >-
+              An interface that matches an Object with the exact key/type mapping given.
+
+        # Validating
+        - type: function
+          category: Validating interfaces
+          name: assert
+          header: assert(aValidation)
+          signature: |
+            Validation<Violation, α> → α :: throws
+          meta:
+            returns: >-
+              The value, if no violations exist.
+            raises: |
+              - **TypeError** - If any violation exists.
