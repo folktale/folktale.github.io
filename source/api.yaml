@@ -572,7 +572,7 @@
                 
         - type: function
           category: Primitive validations
-          name: Null
+          name: "Null"
           header: Null(aValue)
           signature: |
             Any → Validation<Violation, Any>
