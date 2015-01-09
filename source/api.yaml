@@ -7,7 +7,7 @@
         Stability: 3 - Stable
         Portability: Portable
         Version: 1.0.0
-        NPM name: "``core.lambda``"
+        npm package: "``core.lambda``"
         Repository: https://github.com/folktale/core.lambda
         Bug Tracker: https://github.com/folktale/core.lambda/issues
       synopsis: >-
@@ -110,7 +110,7 @@
         Stability: 3 - Stable
         Portability: Portable
         Version: 1.0.0
-        NPM name: "``core.arity``"
+        npm package: "``core.arity``"
         Repository: https://github.com/folktale/core.arity
         Bug Tracker: https://github.com/folktale/core.arity/issues
       synopsis: >-
@@ -164,7 +164,7 @@
         Stability: 1 - Experimental
         Portability: Portable
         Version: 1.0.0
-        NPM name: "``core.operators``"
+        npm package: "``core.operators``"
         Repository: https://github.com/folktale/core.operators
         Bug Tracker: https://github.com/folktale/core.operators/issues
       synopsis: >-
@@ -456,7 +456,7 @@
         Stability: 1 - Experimental
         Portability: Portable
         Version: 0.1.0
-        NPM name: "``core.check``"
+        npm package: "``core.check``"
         Repository: https://github.com/folktale/core.check
         Bug Tracker: https://github.com/folktale/core.check/issues
       synopsis: >-
@@ -738,3 +738,34 @@
               The value, if no violations exist.
             raises: |
               - **TypeError** - If any violation exists.
+
+    - type: module
+      name: inspect
+      meta:
+        Stability: 3 - Stable
+        Portability: Portable
+        Version: 1.0.1
+        npm package: "``core.inspect``"
+        Repository: https://github.com/folktale/core.inspect
+        Bug Tracker: https://github.com/folktale/core.inspect/issues
+      synopsis: |
+        Human-readable representations for built-in and custom objects.
+      platform: ECMAScript 5
+      signature: |
+        Any → String
+      members:
+        - type: function
+          name: show
+          header: show(maxDepth, value)
+          signature: |
+            Number → Any → String
+          meta:
+            returns: A human-readable representation of the value.
+          synopsis: |
+            Provides a human-readable representation of built-in values, and custom
+            values implementing the ``ToString`` interface.
+            
+        
+        
+      members: 
+        
