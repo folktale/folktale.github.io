@@ -7,6 +7,7 @@
         Stability: 3 - Stable
         Portability: Portable
         Version: 1.0.0
+        NPM name: "``core.lambda``"
         Repository: https://github.com/folktale/core.lambda
         Bug Tracker: https://github.com/folktale/core.lambda/issues
       synopsis: >-
@@ -109,6 +110,7 @@
         Stability: 3 - Stable
         Portability: Portable
         Version: 1.0.0
+        NPM name: "``core.arity``"
         Repository: https://github.com/folktale/core.arity
         Bug Tracker: https://github.com/folktale/core.arity/issues
       synopsis: >-
@@ -126,6 +128,7 @@
             Restricts a variadic function to a nullary one.
 
         - type: function
+          name: unary
           header: unary(f)
           signature: |
             (α₁, α₂, ..., αₙ → β) → (α₁ → β)
@@ -135,6 +138,7 @@
             Restricts a variadic function to an unary one.
 
         - type: function
+          name: binary
           header: binary(f)
           signature: |
             (α₁, α₂, ..., αₙ → β) → (α₁ → α₂ → β)
@@ -144,6 +148,7 @@
             Restricts a variadic function to a binary one.
 
         - type: function
+          name: ternary
           header: ternary(f)
           signature: |
             (α₁, α₂, ..., αₙ → β) → (α₁ → α₂ → α₃ → β)
@@ -159,6 +164,7 @@
         Stability: 1 - Experimental
         Portability: Portable
         Version: 1.0.0
+        NPM name: "``core.operators``"
         Repository: https://github.com/folktale/core.operators
         Bug Tracker: https://github.com/folktale/core.operators/issues
       synopsis: >-
@@ -425,23 +431,23 @@
           synopsis: |
             Constructs new objects (``new constructor(...args)``)
 
-      - type: function
-        category: Special
-        name: typeOf
-        header: typeOf(a)
-        signature: |
-          α → String
-        synopsis: |
-          Returns the internal type of the object (``typeof a``)
-
-      - type: function
-        category: Special
-        name: classOf
-        header: classOf(a)
-        signature: |
-          α → String
-        synopsis: |
-          Returns the internal ``[[Class]]`` of the object.
+        - type: function
+          category: Special
+          name: typeOf
+          header: typeOf(a)
+          signature: |
+            α → String
+          synopsis: |
+            Returns the internal type of the object (``typeof a``)
+        
+        - type: function
+          category: Special
+          name: classOf
+          header: classOf(a)
+          signature: |
+            α → String
+          synopsis: |
+            Returns the internal ``[[Class]]`` of the object.
 
         
 
