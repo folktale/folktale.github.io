@@ -19,8 +19,11 @@ operations, which are likely to be used by most programs.
 .. toctree::
 
    core/arity/index
+   core/check/index
+   core/inspect/index
    core/lambda/index
    core/operators/index
+   
 
 Data
 ----
