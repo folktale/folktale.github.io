@@ -152,3 +152,297 @@
           synopsis: |
             Restricts a variadic function to a ternary one.
 
+
+    - type: module
+      name: operators
+      meta:
+        Stability: 1 - Experimental
+        Portability: Portable
+        Version: 1.0.0
+        Repository: https://github.com/folktale/core.operators
+        Bug Tracker: https://github.com/folktale/core.operators/issues
+      synopsis: >-
+        Provides JS operators as curried functions.
+      platform: ECMAScript 5
+      members:
+        - type: function
+          category: Arithmetic
+          name: add
+          header: add(a, b)
+          signature: |
+            Number → Number → Number
+          synopsis: |
+            JavaScript's addition (``a + b``) operator.
+
+        - type: function
+          category: Arithmetic
+          name: subtract
+          header: subtract(a, b)
+          signature: |
+            Number → Number → Number
+          synopsis: |
+            JavaScript's subtraction (``a - b``) operator.
+
+        - type: function
+          category: Arithmetic
+          name: divide
+          header: divide(a, b)
+          signature: |
+            Number → Number → Number
+          synopsis: |
+            JavaScript's division (``a / b``) operator.
+
+        - type: function
+          category: Arithmetic
+          name: multiply
+          header: multiply(a, b)
+          signature: |
+            Number → Number → Number
+          synopsis: |
+            JavaScript's multiplication (``a * b``) operator.
+
+        - type: function
+          category: Arithmetic
+          name: modulus
+          header: modulus(a, b)
+          signature: |
+            Number → Number → Number
+          synopsis: |
+            JavaScript's modulus (``a % b``) operator.
+
+        - type: function
+          category: Arithmetic
+          name: negate
+          header: negate(a)
+          signature: |
+            Number → Number
+          synopsis: |
+            JavaScript's unary negation (``-a``) operator.
+
+        - type: function
+          category: Arithmetic
+          name: increment
+          header: increment(a)
+          signature: |
+            Number → Number
+          synopsis: |
+            Short for ``add(1)(a)``.
+          seealso:
+            - core.operators.add
+
+        - type: function
+          category: Arithmetic
+          name: decrement
+          header: decrement(a)
+          signature: |
+            Number → Number
+          synopsis: |
+            Short for ``subtract(a)(1)``.
+          seealso:
+            - core.operators.subtract
+
+        # Logical operators
+        - type: function
+          category: Logical
+          name: not
+          header: not(a)
+          signature: |
+            Boolean → Boolean
+          synopsis: |
+            Logical negation (``!a``).
+
+        - type: function
+          category: Logical
+          name: and
+          header: and(a, b)
+          signature: |
+            Boolean → Boolean → Boolean
+          synopsis: |
+            Logical conjunction (``a && b``).
+
+        - type: function
+          category: Logical
+          name: or
+          header: or(a, b)
+          signature: |
+            Boolean → Boolean → Boolean
+          synopsis: |
+            Logical disjunction (``a || b``).
+
+        # Bitwise operators
+        - type: function
+          category: Bitwise
+          name: bitNot
+          header: bitNot(a)
+          signature: |
+            Int → Int
+          synopsis: |
+            Bitwise negation (``~a``)
+
+        - type: function
+          category: Bitwise
+          name: bitAnd
+          header: bitAnd(a, b)
+          signature: |
+            Int → Int → Int
+          synopsis: |
+            Bitwise intersection (``a & b``)
+
+        - type: function
+          category: Bitwise
+          name: bitOr
+          header: bitOr(a, b)
+          signature: |
+            Int → Int → Int
+          synopsis: |
+            Bitwise union (``a | b``)
+
+        - type: function
+          category: Bitwise
+          name: bitXor
+          header: bitXor(a, b)
+          signature: |
+            Int → Int → Int
+          synopsis: |
+            Bitwise exclusive union (``a ^ b``)
+            
+        - type: function
+          category: Bitwise
+          name: bitShiftLeft
+          header: bitShiftLeft(a, b)
+          signature: |
+            Int → Int → Int
+          synopsis: |
+            Bitwise left shift (``a << b``)
+            
+        - type: function
+          category: Bitwise
+          name: bitShiftRight
+          header: bitShiftRight(a, b)
+          signature: |
+            Int → Int → Int
+          synopsis: |
+            Sign-propagating bitwise right shift (``a >> b``)
+            
+        - type: function
+          category: Bitwise
+          name: bitUnsignedShiftRight
+          header: bitUnsignedShiftRight(a, b)
+          signature: |
+            Int → Int → Int
+          synopsis: |
+            Zero-fill bitwise right shift (``a >>> b``)
+            
+        # Relational operators
+        - type: function
+          category: Relational
+          name: equal
+          header: equal(a, b)
+          signature: |
+            α → α → Boolean
+          synopsis: |
+            Strict reference equality (``a === b``).
+
+        - type: function
+          category: Relational
+          name: notEqual
+          header: notEqual(a, b)
+          signature: |
+            α → α → Boolean
+          synopsis: |
+            Strict reference inequality (``a !== b``).
+
+        - type: function
+          category: Relational
+          name: greaterThan
+          header: greaterThan(a, b)
+          signature: |
+            α → α → Boolean
+          synopsis: |
+            Greater than (``a > b``).
+
+        - type: function
+          category: Relational
+          name: greaterThanOrEqualTo
+          header: greaterThanOrEqualTo(a, b)
+          signature: |
+            α → α → Boolean
+          synopsis: |
+            Greater than or equal to (``a >= b``).
+        
+        - type: function
+          category: Relational
+          name: lessThan
+          header: lessThan(a, b)
+          signature: |
+            α → α → Boolean
+          synopsis: |
+            Less than (``a < b``).
+
+        - type: function
+          category: Relational
+          name: lessThanOrEqualTo
+          header: lessThanOrEqualTo(a, b)
+          signature: |
+            α → α → Boolean
+          synopsis: |
+            Less than or equal to (``a <= b``).
+        
+        # Special
+        - type: function
+          category: Special
+          name: get
+          header: get(key, object)
+          signature: |
+            String → Object → α | Undefined
+          synopsis: |
+            Property accessor (``object[key]``).
+
+        - type: function
+          category: Special
+          name: has
+          header: has(key, object)
+          signature: |
+            String → Object → Boolean
+          synopsis: |
+            Tests the existence of a property in an object (``key in object``).
+
+        - type: function
+          category: Special
+          name: isInstance
+          header: isInstance(constructor, a)
+          signature: |
+            Function → Object → Boolean
+          synopsis: |
+            Instance check (``a instanceof constructor``).
+
+        - type: function
+          category: Special
+          name: create
+          header: create(constructor, ...args)
+          signature: |
+            (new(α₁, α₂, ..., αₙ) → β) → (α₁, α₂, ..., αₙ) → β)
+          synopsis: |
+            Constructs new objects (``new constructor(...args)``)
+
+      - type: function
+        category: Special
+        name: typeOf
+        header: typeOf(a)
+        signature: |
+          α → String
+        synopsis: |
+          Returns the internal type of the object (``typeof a``)
+
+      - type: function
+        category: Special
+        name: classOf
+        header: classOf(a)
+        signature: |
+          α → String
+        synopsis: |
+          Returns the internal ``[[Class]]`` of the object.
+
+        
+
+        
