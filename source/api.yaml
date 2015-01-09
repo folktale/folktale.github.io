@@ -1,0 +1,103 @@
+- type: package
+  name: core
+  members:
+    - type: module
+      name: lambda
+      meta:
+        Stability: 3 - Stable
+        Version: 1.0.0
+      synopsis: >-
+        Core combinators and higher-order functions.
+      platform: ECMAScript 5
+      members:
+        - type: function
+          name: identity
+          header: identity(a)
+          signature: |
+            identity :: α -> α
+          meta:
+            returns: "The argument it's given."
+          synopsis: |
+            The identity combinator. Always returns the argument it's given.
+
+        - type: function
+          name: constant
+          header: constant(a, b)
+          signature: |
+            constant :: α -> β -> α
+          meta:
+            returns: "The first argument it's given."
+          synopsis: |
+            The constant combinator. Always returns the first argument it's given.
+
+        - type: function
+          name: apply
+          header: apply(f, a)
+          signature: |
+            apply :: (α -> β) -> α -> β
+          meta:
+            returns: "The result of applying ``f`` to ``a``."
+          synopsis: |
+            Applies a function to an argument.
+
+        - type: function
+          name: flip
+          header: flip(f)
+          signature: |
+            flip :: (α -> β -> γ) -> (β -> α -> γ)
+          meta:
+            returns: "The function ``f`` with parameters inverted."
+          synopsis: |
+            Inverts the order of the parameters of a binary function.
+
+        - type: function
+          name: compose
+          header: compose(f, g)
+          signature: |
+            compose :: (β -> γ) -> (α -> β) -> (α -> γ)
+          meta:
+            returns: "A composition of ``f`` and ``g``."
+          synopsis: |
+            Composes two functions together.
+
+        - type: function
+          name: curry
+          header: curry(n, f)
+          signature: |
+            curry :: ₙ:Number -> ((α₁, α₂, ..., αₙ) -> β) -> (α₁ -> α₂ -> ... -> αₙ -> β)
+          meta:
+            returns: "A curried version of ``f``, up to ``n`` arguments."
+          synopsis: |
+            Transforms any function on tuples into a curried function.
+
+        - type: function
+          name: spread
+          header: spread(f, xs)
+          signature: |
+            spread :: (α₁ -> α₂ -> ... -> αₙ -> β) -> (#[α₁, α₂, ..., αₙ] -> β)
+          meta:
+            returns: "The result of applying the function ``f`` to arguments ``xs``."
+          synopsis: |
+            Applies a list of arguments to a curried function.
+
+        - type: function
+          name: uncurry
+          header: uncurry(f)
+          signature: |
+            uncurry :: (α₁ -> α₂ -> ... -> αₙ -> β) -> ((α₁, α₂, ..., αₙ) -> β)
+          meta:
+            returns: "A function on tuples."
+          synopsis: |
+            Transforms a curried function into a function on tuples.
+
+        - type: function
+          name: upon
+          header: upon(f, g)
+          signature: |
+            upon :: (β -> β -> γ) -> (α -> β) -> (α -> α -> γ)
+          meta:
+            returns: "A binary function ``f`` with arguments transformed by ``g``."
+          synopsis: |
+            Applies an unary function to both arguments of a binary function.
+        
+  
