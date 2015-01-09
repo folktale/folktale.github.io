@@ -470,8 +470,8 @@
             type Violation = Tag(String, Any)
                            | Equality(Any, Any)
                            | Identity(Any, Any)
-                           | Any(Array<Any>)
-                           | All(Array<Any>)
+                           | Any(Array(Any))
+                           | All(Array(Any))
 
             implements
               Equality, Extractor, Reflect, Cata, Semigroup, ToString
@@ -559,8 +559,8 @@
                   Tag: (String, Any) → β,
                   Equality: (Any, Any) → β,
                   Identity: (Any, Any) → β,
-                  Any: Array<Any> → β,
-                  All: Array<Any> → β
+                  Any: Array(Any) → β,
+                  All: Array(Any) → β
                 }
               meta:
                 returns: The result of applying the right transformation to the Violation.
@@ -575,7 +575,7 @@
           name: "Null"
           header: Null(aValue)
           signature: |
-            Any → Validation<Violation, Any>
+            Any → Validation(Violation, Any)
           synopsis: >-
             An interface that matches only ``null`` values.
 
@@ -584,7 +584,7 @@
           name: Undefined
           header: Undefined(aValue)
           signature: |
-            Any → Validation<Violation, Any>
+            Any → Validation(Violation, Any)
           synopsis: >-
             An interface that matches only ``undefined`` values.
 
@@ -593,7 +593,7 @@
           name: Boolean
           header: Boolean(aValue)
           signature: |
-            Any → Validation<Violation, Any>
+            Any → Validation(Violation, Any)
           synopsis: >-
             An interface that matches only ``Boolean`` values.
 
@@ -602,7 +602,7 @@
           name: Number
           header: Number(aValue)
           signature: |
-            Any → Validation<Violation, Any>
+            Any → Validation(Violation, Any)
           synopsis: >-
             An interface that matches only ``Number`` values.
 
@@ -611,7 +611,7 @@
           name: String
           header: String(aValue)
           signature: |
-            Any → Validation<Violation, Any>
+            Any → Validation(Violation, Any)
           synopsis: >-
             An interface that matches only ``String`` values.
 
@@ -620,7 +620,7 @@
           name: Function
           header: Function(aValue)
           signature: |
-            Any → Validation<Violation, Any>
+            Any → Validation(Violation, Any)
           synopsis: >-
             An interface that matches only ``Function`` values.
 
@@ -629,7 +629,7 @@
           name: Array
           header: Array(aValue)
           signature: |
-            Any → Validation<Violation, Any>
+            Any → Validation(Violation, Any)
           synopsis: >-
             An interface that matches only ``Array`` values.
 
@@ -638,7 +638,7 @@
           name: Object
           header: Object(aValue)
           signature: |
-            Any → Validation<Violation, Any>
+            Any → Validation(Violation, Any)
           synopsis: >-
             An interface that matches only ``Object`` values.
 
@@ -647,7 +647,7 @@
           name: Any
           header: Any(aValue)
           signature: |
-            Any → Validation<Violation, Any>
+            Any → Validation(Violation, Any)
           synopsis: >-
             An interface that matches any values.
 
@@ -657,7 +657,7 @@
           name: Value
           header: Value(expected)
           signature: |
-            α → (α → Validation<Violation, α>)
+            α → (α → Validation(Violation, α))
           synopsis: >-
             An interface that matches the given value by structural equality.
 
@@ -666,7 +666,7 @@
           name: Identity
           header: Identity(expected)
           signature: |
-            α → (α → Validation<Violation, α>)
+            α → (α → Validation(Violation, α))
           synopsis: >-
             An interface that matches the given value by reference equality.
 
@@ -676,7 +676,7 @@
           name: Or
           header: Or(interfaces)
           signature: |
-            Array<α → Validation<Violation, α>> → α → Validation<Violation, α>
+            Array(α → Validation(Violation, α)) → α → Validation(Violation, α)
           meta:
             returns: >-
               An interface that matches any of the given interfaces.
@@ -686,7 +686,7 @@
           name: And
           header: And(interfaces)
           signature: |
-            Array<α → Validation<Violation, α>> → α → Validation<Violation, α>
+            Array(α → Validation(Violation, α)) → α → Validation(Violation, α)
           meta:
             returns: >-
               An interface that matches only if all of the given interfaces match.
@@ -696,12 +696,12 @@
           name: Seq
           header: Seq(interfaces)
           signature: |
-            Array< α₁ → Validation<Violation, α₁>
-                 , α₂ → Validation<Violation, α₂>
+            Array( α₁ → Validation<Violation, α₁)
+                 , α₂ → Validation(Violation, α₂)
                  , ...
-                 , αₙ → Validation<Violation, αₙ>>
-            → Array<α₁, α₂, ..., αₙ>
-            → Validation<Violation, Array<α₁, α₂, ..., αₙ>>
+                 , αₙ → Validation(Violation, αₙ)>
+            → Array(α₁, α₂, ..., αₙ)
+            → Validation(Violation, Array(α₁, α₂, ..., αₙ))
           meta:
             returns: >-
               An interface that matches an N-Tuple with the given interfaces.
@@ -711,7 +711,7 @@
           name: ArrayOf
           header: ArrayOf(interface)
           signature: |
-            (α → Validation<Violation, α>) → α → Validation<Violation, α>
+            (α → Validation(Violation, α)) → α → Validation(Violation, α)
           meta:
             returns: >-
               An interface that matches an Array with values matching the given interface.
@@ -721,7 +721,7 @@
           name: ObjectOf
           header: ObjectOf(aPattern)
           signature: |
-            Object<Validation<Violation, Any>> → Object<Any> → Validation<Violation, Object<Any>>
+            Object(Validation(Violation, Any)) → Object(Any) → Validation(Violation, Object(Any))
           meta:
             returns: >-
               An interface that matches an Object with the exact key/type mapping given.
@@ -732,7 +732,7 @@
           name: assert
           header: assert(aValidation)
           signature: |
-            Validation<Violation, α> → α :: throws
+            Validation(Violation, α) → α :: throws
           meta:
             returns: >-
               The value, if no violations exist.
@@ -765,7 +765,87 @@
             Provides a human-readable representation of built-in values, and custom
             values implementing the ``ToString`` interface.
             
-        
-        
-      members: 
-        
+- type: package
+  name: control
+  members:
+    - type: module
+      name: monads
+      meta:
+        Stability: 1 - Experimental
+        Portability: Portable
+        Version: 0.6.0
+        npm package: "``control.monads``"
+        Repository: https://github.com/folktale/control.monads
+        Bug Tracker: https://github.com/folktale/control.monads/issues
+      synopsis: >-
+        Common monadic combinators and sequencing operations.
+      platform: ECMAScript 5
+      members:
+        # Curried methods
+        - type: function
+          category: Curried methods
+          name: concat
+          header: concat(a, b)
+          signature: |
+            s:Semigroup(_) => s(α) → s(α) → s(α)
+          meta:
+            returns: A new semigroup with the values combined.
+          synopsis: |
+            Concatenates two semigroups.
+
+        - type: function
+          category: Curried methods
+          name: empty
+          header: empty()
+          signature: |
+            s:Semigroup(_) => s → s(α)
+          meta:
+            returns: A new empty semigroup.
+
+        - type: function
+          category: Curried methods
+          name: map
+          header: map(f, a)
+          signature: |
+            f:Functor(_) => (α → β) → f(α) → f(β)
+          meta:
+            returns: A functor with its contents transformed by ``f``.
+          synopsis: >-
+            Maps over a functor instance.
+
+        - type: function
+          category: Curried methods
+          name: of
+          header: of(a, f)
+          signature: |
+            f:Applicative(_) => α → f → f(α)
+          meta:
+            returns: A new applicative instance containing the given value.
+          synopsis: >-
+            Constructs a new applicative intance.
+
+        - type: function
+          category: Curried methods
+          name: ap
+          header: ap(a, b)
+          signature: |
+            f:Applicative(_) => f(α → β) → f(α) → f(β)
+          meta:
+            returns: A new applicative with values transformed by the receiver.
+          synopsis: |
+            Applies the function of an Applicative to the values of another Applicative.
+
+        - type: function
+          category: Curried methods
+          name: chain
+          header: chain(f, a)
+          signature: |
+            c:Chain(_) => (α → c(β)) → c(α) → c(β)
+          meta:
+            returns: A new monad as transformed by the function.
+          synopsis: |
+            Transforms the values of a monad into a new monad.
+            
+          
+            
+    
