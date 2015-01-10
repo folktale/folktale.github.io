@@ -785,7 +785,7 @@
         - type: function
           category: Curried methods
           name: concat
-          header: concat(a, b)
+          header: concat(left, right)
           signature: |
             s:Semigroup(_) => s(α) → s(α) → s(α)
           meta:
@@ -805,7 +805,7 @@
         - type: function
           category: Curried methods
           name: map
-          header: map(f, a)
+          header: map(transformation, functor)
           signature: |
             f:Functor(_) => (α → β) → f(α) → f(β)
           meta:
@@ -816,7 +816,7 @@
         - type: function
           category: Curried methods
           name: of
-          header: of(a, f)
+          header: of(value, type)
           signature: |
             f:Applicative(_) => α → f → f(α)
           meta:
@@ -827,7 +827,7 @@
         - type: function
           category: Curried methods
           name: ap
-          header: ap(a, b)
+          header: ap(transformation, applicative)
           signature: |
             f:Applicative(_) => f(α → β) → f(α) → f(β)
           meta:
@@ -838,14 +838,100 @@
         - type: function
           category: Curried methods
           name: chain
-          header: chain(f, a)
+          header: chain(transformation, monad)
           signature: |
             c:Chain(_) => (α → c(β)) → c(α) → c(β)
           meta:
             returns: A new monad as transformed by the function.
           synopsis: |
             Transforms the values of a monad into a new monad.
-            
+
+        # Basic operations
+        - type: function
+          name: sequence
+          header: sequence(type, monads)
+          signature: |
+            m:Monad(_) => m → Array(m(α)) → m(Array(α))
+          meta:
+            returns: A monad containing an array of the values.
+          synposis: |
+            Evaluates each action in sequence, left to right, collecting the
+            results.
+
+        - type: function
+          name: mapM
+          header: mapM(type, transformation, values)
+          signature: |
+            m:Monad(_) => m → (α → m(β)) → Array(α) → m(Array(β))
+          meta:
+            returns: A monad containing an array of the values.
+          synopsis: |
+            Converts each value into a monadic action, then evaluates such
+            actions, left to right, and collects their results.
+
+        - type: function
+          name: compose
+          header: compose(f, g, value)
+          signature: |
+            m:Monad(_) => (α → m(β)) → (β → m(γ)) → α → m(γ)
+          meta:
+            returns: A composition of the given functions on monads.
+          synopsis: |
+            Left-to-right Kleisi composition of monads.
+
+        - type: function
+          name: rightCompose
+          header: rightCompose(f, g, value)
+          signature: |
+            m:Monad(_) => (β → m(γ)) → (α → m(β)) → α → m(γ)
+          meta:
+            returns: A composition of the given functions on monads.
+          synopsis: |
+            Right-to-left Kleisi composition of monads.
+
+        - type: function
+          name: join
+          header: join(monad)
+          signature: |
+            m:Monad(_) => m(m(α)) → m(α)
+          meta:
+            returns: The nested monad.
+          synopsis: |
+            Removes one level of nesting for a nested monad.
+
+        - type: function
+          name: filterM
+          header: filterM(type, predicate, values)
+          signature: |
+            m:Monad(_) => m → (α → m(Boolean)) → Array(α) → m(Array(α))
+          meta:
+            returns: An array with values that pass the predicate, inside a monad.
+          synopsis: |
+            Filters the contents of an array with a predicate returning a
+            monad.
+
+        - type: function
+          name: liftM2
+          header: liftM2(transformation, monad1, monad2)
+          signature: |
+            m:Monad(_) => (α, β → γ) → m(α) → m(β) → m(γ)
+          meta:
+            returns: The transformed value inside a monad.
+          synopsis: |
+            Promotes a regular binary function to a function over monads.
+
+        - type: function
+          name: liftMN
+          header: liftMN(transformation, values)
+          signature: |
+            m:Monad(_) => (α₁, α₂, ..., αₙ → β)
+                        → Array(m(α₁), m(α₂), ..., m(αₙ))
+                        → m(β) :: throws
+          meta:
+            returns: The transformed value inside a monad.
+          synopsis: |
+            Promotes a regular function of arity ``N`` to a function over monads.
+          
           
             
     
