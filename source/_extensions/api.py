@@ -159,6 +159,7 @@ def rst_directive(name, arg = '', opts = None, content = PrettyText('')):
 
 def rst_title(title, fill = '-'):
     return PrettyBlock([
+        PrettyText(''),
         PrettyText(title),
         PrettyText(fill * len(title)),
         PrettyText('')
@@ -241,36 +242,42 @@ def rst_object(data, parent = None, more_content = None, brief = True, **kwargs)
         meta = PrettyOptions({ "noindex": "" })
         link = rst_link('+', data['name'], kwargs.get('source'))
         mems = None
+        preamble = PrettyBlock([
+            PrettyText('.. rst-class:: hidden-heading'),
+            PrettyText(''),
+            rst_title(data['name'], '~')
+        ])
     else:
         meta = None
         link = None
         mems = rst_members(x['name'], data.get('members'), **kwargs)
+        preamble = None
 
-    return rst_directive(
-        data['type'],
-        name,
-        meta,
-        PrettyBlock(without_nones([
-            x['meta'],
-            x['signature'],
-            PrettyText(data.get('synopsis', '')),
-            PrettyText(''),
-            more_content,
-            link,
-            mems
-        ]))
-    )
+    return PrettyBlock(without_nones([
+        preamble,
+        rst_directive(
+            data['type'],
+            name,
+            meta,
+            PrettyBlock(without_nones([
+                x['meta'],
+                x['signature'],
+                PrettyText(data.get('synopsis', '')),
+                PrettyText(''),
+                more_content,
+                link,
+                mems
+            ]))
+        )
+    ]))
 
 def rst_members(parent, members, **kwargs):
     def render_category(pair):
         (cat, mems) = pair
-        if cat:
-            return PrettyBlock([
-                rst_title(cat),
-                rst_dirlist(parent, mems, **kwargs)
-            ])
-        else:
-            return rst_dirlist(parent, mems, **kwargs)
+        return PrettyBlock([
+            rst_title(cat or "Uncategorised"),
+            rst_dirlist(parent, mems, **kwargs)
+        ])
 
     if members is not None:
         items = sorted(group_by_category(members).items(), key=lambda x: x[0])
