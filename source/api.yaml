@@ -1716,3 +1716,247 @@
                 @Task(α, β) => Task(α, β) → Task(α, β)
               synopsis: |
                 Selects the earlier of two Tasks.
+
+# -- Validation
+    - type: module
+      name: validation
+      meta:
+        Stability: 3 - Stable
+        Portability: Portable
+        Version: 1.3.0
+        npm package: "``data.validation``"
+        Repository: https://github.com/folktale/data.validation
+        Bug Tracker: https://github.com/folktale/data.validation/issues
+      synopsis: |
+        A disjunction that is more appropriate for validating inputs and
+        aggregating failures.
+      members:
+        - type: class
+          category: Types and structures
+          name: Validation
+          signature: |
+            type Validation(α, β) = Failure(α) | Success(β)
+
+            implements
+              Applicative(β), Functor(β), Chain(β), Monad(β), ToString
+          synopsis: |
+            Represents the logical disjunction between ``α`` and ``β``.
+          members:
+            - type: staticmethod
+              category: Constructing
+              name: Failure
+              header: Failure(value)
+              signature: |
+                α → Validation(α, β)
+              synopsis: |
+                Constructs a new Validation structure holding a
+                ``Failure`` value.
+
+            - type: staticmethod
+              category: Constructing
+              name: Success
+              header: Success(value)
+              signature: |
+                β → Validation(α, β)
+              synopsis: |
+                Constructs a new Validation structure holding a
+                ``Success`` value.
+
+            - type: staticmethod
+              category: Constructing
+              name: of
+              header: of(value)
+              signature: |
+                β → Validation(α, β)
+              synopsis: |
+                Creates a new Validation instance holding the
+                ``Success`` value ``β``.
+
+            - type: staticmethod
+              category: Constructing
+              name: fromNullable
+              header: fromNullable(value)
+              signature: |
+                α | null | undefined → Validation(null | undefined, α)
+              synopsis: |
+                Constructs a new Validation structure from a nullable
+                type.
+
+                Takes the ``Failure`` value if the value is ``null`` or
+                ``undefined``. Takes the ``Success`` case otherwise.
+
+
+            - type: staticmethod
+              category: Constructing
+              name: fromEither
+              header: fromEither(value)
+              signature: |
+                Either(α, β) → Validation(α, β)
+              synopsis: |
+                Constructs a new ``Validation(α, β)`` structure from an
+                ``Either(α, β)`` structure.
+
+            # Conversions
+            - type: method
+              category: Converting
+              name: toString
+              header: toString()
+              signature: |
+                @Validation(α, β) => Unit → String
+              synopsis: |
+                Returns a textual representation of the ``Validation(α, β)``
+                structure.
+
+            # Comparing and testing
+            - type: attribute
+              category: Comparing and testing
+              name: isFailure
+              signature: Boolean
+              synopsis: |
+                True if the ``Validation(α, β)`` contains a ``Failure`` value.
+
+            - type: attribute
+              category: Comparing and testing
+              name: isSuccess
+              signature: Boolean
+              synopsis: |
+                True if the ``Validation(α, β)`` contains a ``Success`` value.
+
+            - type: method
+              category: Comparing and testing
+              name: isEqual
+              header: isEqual(aValidation)
+              signature: |
+                @Validation(α, β) => Validation(α, β) → Boolean
+              synopsis: |
+                Tests if two ``Validation(α, β)`` structures are equal. Compares
+                the contents using reference equality.
+
+            # Transforming
+            - type: method
+              category: Transforming
+              name: ap
+              header: ap(anApplicative)
+              signature: |
+                @Validation(α, β → γ), f:Applicative(_) => f(β) → f(γ)
+              synopsis: |
+                Applies the function inside the ``Validation(α, β)`` structure
+                to another Applicative type, and combines failures
+                with a semigroup.
+
+            - type: method
+              category: Transforming
+              name: map
+              header: map(transformation)
+              signature: |
+                @Validation(α, β) => (β → γ) → Validation(α, γ)
+              synopsis: |
+                Transforms the ``Success`` value of the ``Validation(α, β)``
+                structure using a regular unary function.
+              seealso:
+                - data.validation.Validation.bimap
+                - data.validation.Validation.failureMap
+
+              
+            - type: method
+              category: Transforming
+              name: fold
+              header: fold(leftTransformation, rightTransformation)
+              signature: |
+                @Validation(α, β) => (α → γ), (β → γ) → γ
+              synopsis: |
+                Applies a function to each case in the data structure.
+              seealso:
+                - data.validation.Validation.cata
+
+            - type: method
+              category: Transforming
+              name: cata
+              header: cata(pattern)
+              signature: |
+                @Validation(α, β) => { r | Pattern } → γ
+                type Pattern {
+                  Failure: α → γ,
+                  Success: β → γ
+                }
+              synopsis: |
+                Applies a function to each case in the data structure.
+
+            - type: method
+              category: Transforming
+              name: swap
+              header: swap()
+              signature: |
+                @Validation(α, β) => Unit → Validation(β, α)
+              synopsis: |
+                Swaps the disjunction values.
+
+            - type: method
+              category: Transforming
+              name: bimap
+              header: bimap(leftTransformation, rightTransformation)
+              signature: |
+                @Validation(α, β) => (α → γ), (β → δ) → Validation(γ, δ)
+              synopsis: |
+                Maps both sides of the disjunction.
+              seealso:
+                - data.validation.Validation.map
+                - data.validation.Validation.leftMap
+
+            - type: method
+              category: Transforming
+              name: failureMap
+              header: failureMap(transformation)
+              signature: |
+                @Validation(α, β) => (α → γ) → Validation(γ, β)
+              synopsis: |
+                Maps the left side of the disjunction.
+              seealso:
+                - data.validation.Validation.map
+                - data.validation.Validation.bimap
+
+            - type: method
+              category: Transforming
+              name: orElse
+              header: orElse(transformation)
+              signature: |
+                @Validation(α, β) => (α → Validation(γ, β)) → Validation(γ, β)
+              synopsis: |
+                Transforms the ``Failure`` value into a new ``Validation(α, β)``
+                structure.
+
+            # Extracting
+            - type: method
+              category: Extracting
+              name: get
+              header: get()
+              signature: |
+                @Validation(α, β) => Unit → β :: throws
+              meta:
+                raises: |
+                  - **TypeError** - If the structure has no ``Success`` value.
+              synopsis: |
+                Extracts the ``Success`` value out of the ``Validation(α, β)``
+                structure, if it exists.
+              seealso:
+                - data.validation.Validation.getOrElse
+                - data.validation.Validation.merge
+
+            - type: method
+              category: Extracting
+              name: getOrElse
+              header: getOrElse(default)
+              signature: |
+                @Validation(α, β) => β → β
+              synopsis: |
+                Extracts the ``Success`` value out of the ``Validation(α, β)``
+                structure. If it doesn't exist, returns a default value.
+
+            - type: method
+              category: Extracting
+              name: merge
+              header: merge()
+              signature: |
+                @Validation(α, β) => Unit → α | β
+              synopsis: |
+                Returns whichever side of the disjunction that is present.
