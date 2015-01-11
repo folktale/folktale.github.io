@@ -56,11 +56,12 @@ def bool_option(arg):
     """Used to convert flag options in a directive."""
     return True
 
-def qualify_name(parent, name):
+def qualify_name(kind, parent, name):
+    prefix = 'prototype.' if kind == 'method' else ''
     if parent is None:
         return name
     else:
-        return parent + '.' + name
+        return parent + '.' + prefix + name
 
 def without_nones(xs):
     return filter(lambda x: x is not None, xs)
@@ -83,11 +84,23 @@ def normalise_signature(data):
 
 def normalise_data(data, parent):
     return {
-        "name": qualify_name(parent, data['name']),
+        "name": qualify_name(data['type'], parent, data['name']),
         "meta": normalise_options(data),
         "signature": normalise_signature(data)
     }
     
+def toc_name(data):
+    kind = data['type']
+    if kind == "staticmethod":
+        return "." + data['name'] + "()"
+    elif kind == "method":
+        return "#" + data['name'] + "()"
+    elif kind == "attribute":
+        return "." + data['name']
+    elif kind == "function":
+        return data['name'] + "()"
+    else:
+        return data['name']
 
 
 # -- Pretty printing ---------------------------------------------------
@@ -168,6 +181,9 @@ def rst_title(title, fill = '-'):
 def rst_signature(sig):
     return rst_directive('code-block', 'haskell', content = PrettyText(sig))
 
+def has_page(source, name):
+    return isfile(join(dirname(source), name + '.rst'))
+
 def rst_link(title, doc, source = None):
     link = rst_directive(
         'rst-class', 'detail-link',
@@ -176,6 +192,8 @@ def rst_link(title, doc, source = None):
     if source is not None:
         if isfile(join(dirname(source), doc + ".rst")):
             return link
+        else:
+            return None
     else:
         return link
 
@@ -203,10 +221,11 @@ def rst_module(data, parent = None, more_content = None, brief = False, **kwargs
 
 def rst_class(data, parent = None, more_content = None, brief = True, **kwargs):
     x = normalise_data(data, parent)
+    source = kwargs.get('source')
     if more_content is not None:
         more_content = PrettyText(more_content + '\n\n')
     if brief:
-        meta = PrettyOptions({ "noindex": "" })
+        meta = PrettyOptions({ "noindex": "" }) if has_page(source, data['name']) else None
         link = rst_link('+', data['name'], kwargs.get('source'))
         mems = None
     else:
@@ -235,7 +254,7 @@ def rst_class(data, parent = None, more_content = None, brief = True, **kwargs):
 
 def rst_object(data, parent = None, more_content = None, brief = True, **kwargs):
     x = normalise_data(data, parent)
-    name = qualify_name(parent, data.get('header', data['name']))
+    name = qualify_name(data['type'], parent, data.get('header', data['name']))
     if more_content is not None:
         more_content = PrettyText(more_content + '\n\n')
     if brief:
@@ -245,7 +264,7 @@ def rst_object(data, parent = None, more_content = None, brief = True, **kwargs)
         preamble = PrettyBlock([
             PrettyText('.. rst-class:: hidden-heading'),
             PrettyText(''),
-            rst_title(data['name'], '~')
+            rst_title(toc_name(data), '~')
         ])
     else:
         meta = None
