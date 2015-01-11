@@ -48,7 +48,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Folktale'
-copyright = u'2015, Quildreen Motta'
+copyright = u'<a href="https://robotlolita.me/">Sorella</a>'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -109,7 +109,10 @@ html_theme = 'caffeine'
 # documentation.
 html_theme_options = {
     "version_y": "-45px",
-    "version_x": "175px"
+    "version_x": "175px",
+    "licence": """
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+"""
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
