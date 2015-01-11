@@ -6,7 +6,7 @@ navigation:
     url: /index.html
     group: home
   - text: Documentation
-    url: /documentation/index.html
+    url: http://docs.folktalejs.org
     group: docs
   - text: Community
     url: /community/index.html
