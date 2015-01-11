@@ -932,6 +932,179 @@
           synopsis: |
             Promotes a regular function of arity ``N`` to a function over monads.
           
-          
+    - type: module
+      name: async
+      meta:
+        Stability: 1 - Experimental
+        Portability: Portable
+        Version: 0.5.1
+        npm package: "``control.async``"
+        Repository: https://github.com/folktale/control.async
+        Bug Tracker: https://github.com/folktale/control.async
+      synopsis: >-
+        Operations for asynchronous control flow.
+      platform: ECMAScript 5
+      members:
+        - type: function
+          category: Combining tasks
+          name: parallel
+          header: parallel(tasks)
+          signature: |
+            Array(Task(α, β)) → Task(α, Array(β))
+          meta:
+            returns: A task that runs the given ones in parallel.
+          synopsis: |
+            Resolves all tasks in parallel, and collects their results.
+
+        - type: function
+          category: Combining tasks
+          name: nondeterministicChoice
+          header: nondeterministicChoice(tasks)
+          signature: |
+            Array(Task(α, β)) → Task(α, Maybe(β))
+          meta:
+            returns: A task that selects the first task to resolve.
+          synopsis: |
+            Runs all tasks in parallel, selects the first one to
+            either succeed or fail.
+          seealso:
+            - control.async.choice
+            - control.async.tryAll
+
+        - type: function
+          category: Combining tasks
+          name: choice
+          header: choice(tasks)
+          signature: |
+            Array(Task(α, β)) → Task(α, Maybe(β))
+          synopsis: |
+            Alias for :func:`nondeterministicChoice`
+
+        - type: function
+          category: Combining tasks
+          name: tryAll
+          header: tryAll(tasks)
+          signature: |
+            Array(Task(α, β)) → Task(Array(α), Maybe(β))
+          synopsis: |
+            Creates a task that succeeds if one task succeeds, or fails
+            if all of them fail.
+          seealso:
+            - control.async.nondeterministicChoice
+
+        # Transforming
+        - type: function
+          category: Transforming
+          name: memoise
+          header: memoise(task)
+          signature: |
+            Task(α, β) → Task(α, β)
+          synopsis: |
+            Caches the result of a Task, to avoid running the same task
+            again for idempotent or pure tasks.
+
+        # Error handling
+        - type: function
+          category: Error handling
+          name: catchOnly
+          header: catchOnly(filter, task)
+          signature: |
+            (γ → Boolean) → Task(α, β) :: throws(γ) → Task(α | γ, β)
+          synopsis: |
+            Reifies some errors thrown by the computation to a rejected task.
+          seealso:
+            - control.async.catchAllPossibleErrors
+
+        - type: function
+          category: Error handling
+          name: catchAllPossibleErrors
+          header: catchAllPossibleErrors(task)
+          signature: |
+            Task(α, β) :: throws(Any) → Task(Any, β)
+          synopsis: |
+            Reifies **all** errors thrown by the computation to a rejected task.
+          seealso:
+            - control.async.catchOnly
+
+        # Converting
+        - type: function
+          category: Converting
+          name: lift
+          header: lift(function)
+          signature: |
+            (α₁, α₂, ..., αₙ, (β → Unit)) → (α₁, α₂, ..., αₙ → Task(Unit, β))
+          synopsis: >-
+            Converts a function that takes a simple continuation to a Task.
+
+        - type: function
+          category: Converting
+          name: liftNode
+          header: liftNode(function)
+          signature: |
+            (α₁, α₂, ..., αₙ, (β, γ → Unit)) → (α₁, α₂, ..., αₙ → Task(β, γ))
+          synopsis: >-
+            Converts a function that takes a Node-style continuation to a Task.
+
+        - type: function
+          category: Converting
+          name: toNode
+          header: toNode(task)
+          signature: |
+            Task(α, β) → (α | null, β | null → Unit)
+          synopsis: >-
+            Converts a Task to a Node-style function.
+
+        - type: function
+          category: Converting
+          name: fromPromise
+          header: fromPromise(promise)
+          signature: |
+            Promise(α, β) → Task(α, β)
+          synopsis: |
+            Converts a Promises/A+ to a Task.
+
+
+        - type: function
+          category: Converting
+          name: toPromise
+          header: toPromise(constructor, task)
+          signature: |
+            PromiseConstructor → Task(α, β) → Promise(α, β)
+
+            type PromiseConstructor = new((α → Unit), (β → Unit) → Unit)
+                                    → Promise(α, β)
+          synopsis: |
+            Converts from Task to Promises/A+.
+
+            .. note::
+
+               Do note that nested Tasks, unlike Promises/A+, are **NOT**
+               flattened. You need to manually call :func:`control.monads.join`
+               until you get to the value itself, if you care about passing
+               just the value.
+
+        # Timers
+        - type: function
+          category: Timers
+          name: delay
+          header: delay(milliseconds)
+          signature: |
+            Number → Task(Unit, Number)
+          meta:
+            returns: A Task that succeeds after N milliseconds.
+          synopsis: |
+            Constructs a Task that always succeeds after at least N milliseconds.
+            The value of the Task will be the delta from the time of its
+            initial execution to the time it gets resolved.
+
+        - type: function
+          category: Timers
+          name: timeout
+          header: timeout(milliseconds)
+          signature: |
+            Number → Task(TimeoutError, Unit)
+          meta:
+            returns: A Task that always fails after N milliseconds.
+          synopsis: |
+            Constructs a Task that always fails after at least N milliseconds.
             
-    
