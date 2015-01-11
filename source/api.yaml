@@ -12,7 +12,6 @@
         Bug Tracker: https://github.com/folktale/core.lambda/issues
       synopsis: >-
         Core combinators and higher-order functions.
-      platform: ECMAScript 5
       members:
         - type: function
           name: identity
@@ -115,7 +114,6 @@
         Bug Tracker: https://github.com/folktale/core.arity/issues
       synopsis: >-
         Restricts the arity of variadic functions.
-      platform: ECMAScript 5
       members:
         - type: function
           name: nullary
@@ -169,7 +167,6 @@
         Bug Tracker: https://github.com/folktale/core.operators/issues
       synopsis: >-
         Provides JS operators as curried functions.
-      platform: ECMAScript 5
       members:
         - type: function
           category: Arithmetic
@@ -461,7 +458,6 @@
         Bug Tracker: https://github.com/folktale/core.check/issues
       synopsis: >-
         Interface checking for JS values.
-      platform: ECMAScript 5
       members:
         - type: class
           category: Types and structures
@@ -750,7 +746,6 @@
         Bug Tracker: https://github.com/folktale/core.inspect/issues
       synopsis: |
         Human-readable representations for built-in and custom objects.
-      platform: ECMAScript 5
       signature: |
         Any → String
       members:
@@ -779,7 +774,6 @@
         Bug Tracker: https://github.com/folktale/control.monads/issues
       synopsis: >-
         Common monadic combinators and sequencing operations.
-      platform: ECMAScript 5
       members:
         # Curried methods
         - type: function
@@ -941,9 +935,10 @@
         npm package: "``control.async``"
         Repository: https://github.com/folktale/control.async
         Bug Tracker: https://github.com/folktale/control.async
-      synopsis: >-
+      signature: |
+        Task(_, _) → AsyncModule
+      synopsis: |
         Operations for asynchronous control flow.
-      platform: ECMAScript 5
       members:
         - type: function
           category: Combining tasks
@@ -1108,3 +1103,261 @@
           synopsis: |
             Constructs a Task that always fails after at least N milliseconds.
             
+- type: package
+  name: data
+  members:
+    - type: module
+      name: either
+      meta:
+        Stability: 3 - Stable
+        Portability: Portable
+        Version: 1.2.0
+        npm package: "``data.either``"
+        Repository: https://github.com/folktale/data.either
+        Bug Tracker: https://github.com/folktale/data.either/issues
+      synopsis: |
+        A structure for disjunctions (e.g.: computations that may fail).
+      members:
+        - type: class
+          category: Types and structures
+          name: Either
+          signature: |
+            type Either(α, β) = Left(α) | Right(β)
+
+            implements
+              Applicative(β), Functor(β), Chain(β), ToString, Equality
+          synopsis: |
+            Represents the logical disjunction between ``α`` and ``β``.
+          members:
+            - type: staticmethod
+              category: Constructing
+              name: Left
+              header: Left(value)
+              signature: |
+                α → Either(α, β)
+              synopsis: |
+                Constructs a new ``Either(α, β)`` structure holding a
+                ``Left`` value. This usually represents a failure, due
+                to the right-bias of this structure.
+
+            - type: staticmethod
+              category: Constructing
+              name: Right
+              header: Right(value)
+              signature: |
+                β → Either(α, β)
+              synopsis: |
+                Constructs a new ``Either(α, β)`` structure holding a
+                ``Right`` value. This usually represents a successful
+                value due to the right bias of this structure.
+
+            - type: staticmethod
+              category: Constructing
+              name: of
+              header: of(value)
+              signature: |
+                β → Either(α, β)
+              synopsis: |
+                Creates a new ``Either(α, β)`` instance holding the
+                ``Right`` value ``β``.
+
+            # Conversions
+            - type: staticmethod
+              category: Converting
+              name: fromNullable
+              header: fromNullable(value)
+              signature: |
+                α | null | undefined → Either(null | undefined, α)
+              synopsis: |
+                Constructs a new ``Either(α, β)`` structure from a nullable
+                type.
+
+                Takes the ``Left`` value if the value is ``null`` or
+                ``undefined``. Takes the ``Right`` case otherwise.
+
+
+            - type: staticmethod
+              category: Converting
+              name: fromValidation
+              header: fromValidation(value)
+              signature: |
+                Validation(α, β) → Either(α, β)
+              synopsis: |
+                Constructs a new ``Either(α, β)`` structure from a
+                ``Validation(α, β)`` structure.
+
+            - type: method
+              category: Converting
+              name: toString
+              header: toString()
+              signature: |
+                @Either(α, β) => Unit → String
+              synopsis: |
+                Returns a textual representation of the ``Either(α, β)`` structure.
+
+            # Comparing and testing
+            - type: attribute
+              category: Comparing and testing
+              name: isLeft
+              signature: Boolean
+              synopsis: |
+                True if the ``Either(α, β)`` contains a ``Left`` value.
+
+            - type: attribute
+              category: Comparing and testing
+              name: isRight
+              signature: Boolean
+              synopsis: |
+                True if the ``Either(α, β)`` contains a ``Right`` value.
+
+            - type: method
+              category: Comparing and testing
+              name: isEqual
+              header: isEqual(anEither)
+              signature: |
+                @Either(α, β) => Either(α, β) → Boolean
+              synopsis: |
+                Tests if two ``Either(α, β)`` structures are equal. Compares
+                the contents using reference equality.
+
+            # Transforming
+            - type: method
+              category: Transforming
+              name: ap
+              header: ap(anApplicative)
+              signature: |
+                @Either(α, β → γ), f:Applicative(_) => f(β) → f(γ)
+              synopsis: |
+                Applies the function inside the ``Either(α, β)`` structure
+                to another Applicative type.
+
+            - type: method
+              category: Transforming
+              name: map
+              header: map(transformation)
+              signature: |
+                @Either(α, β) => (β → γ) → Either(α, γ)
+              synopsis: |
+                Transforms the ``Right`` value of the ``Either(α, β)`` structure
+                using a regular unary function.
+              seealso:
+                - data.either.Either.chain
+                - data.either.Either.bimap
+                - data.either.Either.leftMap
+
+            - type: method
+              category: Transforming
+              name: chain
+              header: chain(transformation)
+              signature: |
+                @Either(α, β), m:Monad(_) => (β → m(γ)) → m(γ)
+              synopsis: |
+                Transforms the ``Right`` value of the ``Either(α, β)`` structure
+                using an unary function over monads.
+              seealso:
+                - data.either.Either.map
+                - data.either.Either.orElse
+              
+            - type: method
+              category: Transforming
+              name: fold
+              header: fold(leftTransformation, rightTransformation)
+              signature: |
+                @Either(α, β) => (α → γ), (β → γ) → γ
+              synopsis: |
+                Applies a function to each case in the data structure.
+              seealso:
+                - data.either.Either.cata
+
+            - type: method
+              category: Transforming
+              name: cata
+              header: cata(pattern)
+              signature: |
+                @Either(α, β) => { r | Pattern } → γ
+                type Pattern {
+                  Left: α → γ,
+                  Right: β → γ
+                }
+              synopsis: |
+                Applies a function to each case in the data structure.
+
+            - type: method
+              category: Transforming
+              name: swap
+              header: swap()
+              signature: |
+                @Either(α, β) => Unit → Either(β, α)
+              synopsis: |
+                Swaps the disjunction values.
+
+            - type: method
+              category: Transforming
+              name: bimap
+              header: bimap(leftTransformation, rightTransformation)
+              signature: |
+                @Either(α, β) => (α → γ), (β → δ) → Either(γ, δ)
+              synopsis: |
+                Maps both sides of the disjunction.
+              seealso:
+                - data.either.Either.map
+                - data.either.Either.leftMap
+
+            - type: method
+              category: Transforming
+              name: leftMap
+              header: leftMap(transformation)
+              signature: |
+                @Either(α, β) => (α → γ) → Either(γ, β)
+              synopsis: |
+                Maps the left side of the disjunction.
+              seealso:
+                - data.either.Either.map
+                - data.either.Either.bimap
+
+            - type: method
+              category: Transforming
+              name: orElse
+              header: orElse(transformation)
+              signature: |
+                @Either(α, β) => (α → Either(γ, β)) → Either(γ, β)
+              synopsis: |
+                Transforms the ``Left`` value into a new ``Either(α, β)``
+                structure.
+
+            # Extracting
+            - type: method
+              category: Extracting
+              name: get
+              header: get()
+              signature: |
+                @Either(α, β) => Unit → β :: throws
+              meta:
+                raises: |
+                  - **TypeError** - If the structure has no ``Right`` value.
+              synopsis: |
+                Extracts the ``Right`` value out of the ``Either(α, β)``
+                structure, if it exists.
+              seealso:
+                - data.either.Either.getOrElse
+                - data.either.Either.merge
+
+            - type: method
+              category: Extracting
+              name: getOrElse
+              header: getOrElse(default)
+              signature: |
+                @Either(α, β) => β → β
+              synopsis: |
+                Extracts the ``Right`` value out of the ``Either(α, β)``
+                structure. If it doesn't exist, returns a default value.
+
+            - type: method
+              category: Extracting
+              name: merge
+              header: merge()
+              signature: |
+                @Either(α, β) => Unit → α | β
+              synopsis: |
+                Returns whichever side of the disjunction that is present.
+              
