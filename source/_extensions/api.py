@@ -96,7 +96,7 @@ def toc_name(data):
     elif kind == "method":
         return "#" + data['name'] + "()"
     elif kind == "attribute":
-        return "." + data['name']
+        return "#" + data['name']
     elif kind == "function":
         return data['name'] + "()"
     else:
