@@ -1125,7 +1125,7 @@
             type Either(α, β) = Left(α) | Right(β)
 
             implements
-              Applicative(β), Functor(β), Chain(β), ToString, Equality
+              Applicative(β), Functor(β), Chain(β), Monad(β), ToString
           synopsis: |
             Represents the logical disjunction between ``α`` and ``β``.
           members:
@@ -1161,9 +1161,8 @@
                 Creates a new ``Either(α, β)`` instance holding the
                 ``Right`` value ``β``.
 
-            # Conversions
             - type: staticmethod
-              category: Converting
+              category: Constructing
               name: fromNullable
               header: fromNullable(value)
               signature: |
@@ -1177,7 +1176,7 @@
 
 
             - type: staticmethod
-              category: Converting
+              category: Constructing
               name: fromValidation
               header: fromValidation(value)
               signature: |
@@ -1186,6 +1185,7 @@
                 Constructs a new ``Either(α, β)`` structure from a
                 ``Validation(α, β)`` structure.
 
+            # Conversions
             - type: method
               category: Converting
               name: toString
@@ -1361,3 +1361,206 @@
               synopsis: |
                 Returns whichever side of the disjunction that is present.
               
+    - type: module
+      name: maybe
+      meta:
+        Stability: 3 - Stable
+        Portability: Portable
+        Version: 1.2.0
+        npm package: "``data.maybe``"
+        Repository: https://github.com/folktale/data.maybe
+        Bug Tracker: https://github.com/folktale/data.maybe/issues
+      synopsis: |
+        A structure for values that may not be present, or computations that
+        may fail.
+      members:
+        - type: class
+          category: Types and structures
+          name: Maybe
+          signature: |
+            type Maybe(α) = Nothing | Just(α)
+
+            implements
+              Applicative(α), Functor(α), Chain(α), Monad(α), ToString
+          synopsis: |
+            A structure for values that may not be present, or computations
+            that may fail.
+          members:
+            - type: staticmethod
+              category: Constructing
+              name: Nothing
+              header: Nothing()
+              signature: |
+                Unit → Maybe(α)
+              synopsis: |
+                Constructs a new ``Maybe(α)`` structure with an absent value.
+                Commonly used to represent a failure.
+
+            - type: staticmethod
+              category: Constructing
+              name: Just
+              header: Just(value)
+              signature: |
+                α → Maybe(α)
+              synopsis: |
+                Constructs a new ``Maybe(α)`` structure that holds the single
+                value ``α``. Commonly used to represent a success.
+
+            - type: staticmethod
+              category: Constructing
+              name: of
+              header: of(value)
+              signature: |
+                α → Maybe(α)
+              synopsis: |
+                Constructs a new ``Maybe(α)`` structure that holds the single
+                value ``α``.
+
+            - type: staticmethod
+              category: Constructing
+              name: fromNullable
+              header: fromNullable(value)
+              signature: |
+                α | null | undefined → Maybe(α)
+              synopsis: |
+                Constructs a new ``Maybe(α)`` value from a nullable type.
+
+                If the value is ``null`` or ``undefined``, returns a ``Nothing``,
+                otherwise returns the value wrapped in a ``Just``.
+
+            - type: staticmethod
+              category: Constructing
+              name: fromEither
+              header: fromEither(value)
+              signature: |
+                Either(α, β) → Maybe(β)
+              synopsis: |
+                Constructs a new ``Maybe(β)`` from an ``Either(α, β)`` value.
+
+            - type: staticmethod
+              category: Constructing
+              name: fromValidation
+              header: fromValidation(value)
+              signature: |
+                Validation(α, β) → Maybe(β)
+              synopsis: |
+                Constructs a new ``Maybe(β)`` from a ``Validation(α, β)`` value.
+
+            # Comparing and testing
+            - type: attribute
+              category: Comparing and testing
+              name: isNothing
+              signature: Boolean
+              synopsis: |
+                True if the ``Maybe(α)`` structure contains a ``Nothing``.
+
+            - type: attribute
+              category: Comparing and testing
+              name: isJust
+              signature: Boolean
+              synopsis: |
+                True if the ``Maybe(α)`` structure contains a ``Just``.
+
+            - type: method
+              category: Comparing and testing
+              name: isEqual
+              header: isEqual(aMaybe)
+              signature: |
+                @Maybe(α) => Maybe(α) → Boolean
+              synopsis: |
+                Tests if two ``Maybe(α)`` contains are similar.
+
+                Contents are checked using reference equality.
+
+            # Converting
+            - type: method
+              category: Converting
+              name: toString
+              header: toString()
+              signature: |
+                @Maybe(α) => Unit → String
+              synopsis: |
+                Returns a textual representation of the structure.
+
+            - type: method
+              category: Converting
+              name: toJSON
+              header: toJSON()
+              signature: |
+                @Maybe(α) => Unit → Object
+              synopsis: |
+                Returns a JSON serialisation of the structure.
+
+            # Transformation
+            - type: method
+              category: Transforming
+              name: ap
+              header: ap(anApplicative)
+              signature: |
+                @Maybe(α → β), f:Applicative(_) => f(α) → f(β)
+              synopsis: |
+                Applies the function inside the structure to another Applicative
+                type.
+
+            - type: method
+              category: Transforming
+              name: map
+              header: map(transformation)
+              signature: |
+                @Maybe(α) => (α → β) → Maybe(β)
+              synopsis: |
+                Transforms the value of this structure using a regular unary
+                function.
+
+            - type: method
+              category: Transforming
+              name: chain
+              header: chain(transformation)
+              signature: |
+                @Maybe(α), m:Monad(_) => (α → m(β)) → m(β)
+              synopsis: |
+                Transforms the value of this structure using an unary function
+                over monads.
+
+            - type: method
+              category: Transforming
+              name: orElse
+              header: orElse(transformation)
+              signature: |
+                @Maybe(α) => (Unit → Maybe(β)) → Maybe(β)
+              synopsis: |
+                Transforms the failure into a new ``Maybe`` structure.
+
+            - type: method
+              category: Transforming
+              name: cata
+              header: cata(aPattern)
+              signature: |
+                @Maybe(α) => { Nothing: Unit → β, Just: α → β } → β
+              synopsis: |
+                Applies a function to each case in the data structure.
+
+            # Extracting
+            - type: method
+              category: Extracting
+              name: get
+              header: get()
+              signature: |
+                @Maybe(α) => Unit → α :: throws
+              meta:
+                raises: |
+                  - **TypeError** - if the structure is a Nothing.
+              synopsis: |
+                Extracts the value out of the structure, if it exists.
+              seealso:
+                - data.maybe.Maybe.getOrElse
+
+            - type: method
+              category: Extracting
+              name: getOrElse
+              header: getOrElse(default)
+              signature: |
+                @Maybe(α) => α → α
+              synopsis: |
+                Extracts the value out of the structure, if it exists. Otherwise
+                return the given default value.
