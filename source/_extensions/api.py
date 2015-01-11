@@ -57,7 +57,7 @@ def bool_option(arg):
     return True
 
 def qualify_name(kind, parent, name):
-    prefix = 'prototype.' if kind == 'method' else ''
+    prefix = 'prototype.' if kind in ['method', 'attribute'] else ''
     if parent is None:
         return name
     else:
