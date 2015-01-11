@@ -231,7 +231,7 @@ def rst_class(data, parent = None, more_content = None, brief = True, **kwargs):
     else:
         meta = None
         link = None
-        mems = rst_members(x['name'], data.get('members'), **kwargs)
+        mems = rst_members(data['name'], data.get('members'), **kwargs)
     
     return PrettyBlock(without_nones([
         rst_directive(
