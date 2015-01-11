@@ -1564,3 +1564,155 @@
               synopsis: |
                 Extracts the value out of the structure, if it exists. Otherwise
                 return the given default value.
+
+    - type: module
+      name: task
+      meta:
+        Stability: 3 - Stable
+        Portability: Portable
+        Version: 3.0.0
+        npm package: "``data.task``"
+        Repository: https://github.com/folktale/data.task
+        Bug Tracker: https://github.com/folktale/data.task/issues
+      synopsis: |
+        A structure for time-dependent values, providing explicit effects for
+        delayed computations, latency, etc.
+      members:
+        - type: class
+          category:  Types and structures
+          name: Task
+          signature: |
+            type Task(α, β)
+
+            new ((α → Unit), (β → Unit) → γ), (γ → Unit)
+            
+            implements
+              Chain(β), Monad(β), Functor(β), Applicative(β),
+              Semigroup(β), Monoid(β), ToString
+
+          synopsis: |
+            A structure for time-dependent values.
+          members:
+            # Constructing
+            - type: staticmethod
+              category: Constructing
+              name: of
+              header: of(value)
+              signature: |
+                β → Task(α, β)
+              synopsis: |
+                Constructs a new Task containing the given successful value.
+
+            - type: staticmethod
+              category: Constructing
+              name: rejected
+              header: rejected(value)
+              signature: |
+                α → Task(α, β)
+              synopsis: |
+                Constructs a new Task containing the given failure value.
+
+            - type: staticmethod
+              category: Constructing
+              name: empty
+              header: empty()
+              signature: |
+                Unit → Task(α, β)
+              synopsis: |
+                Constructs a Task that will never resolve.
+
+            # Transforming
+            - type: method
+              category: Transforming
+              name: map
+              header: map(transformation)
+              signature: |
+                @Task(α, β) => (β → γ) → Task(α, γ)
+              synopsis: |
+                Transforms the successful value of the Task using a regular
+                unary function.
+
+            - type: method
+              category: Transforming
+              name: chain
+              header: chain(transformation)
+              signature: |
+                @Task(α, β) => (β → Task(α, γ)) → Task(α, γ)
+              synopsis: |
+                Transforms the succesful value of the Task using a function
+                over monads.
+
+            - type: method
+              category: Transforming
+              name: ap
+              header: ap(task)
+              signature: |
+                @Task(α, β → γ) => Task(α, β) → Task(α, γ)
+              synopsis: |
+                Transforms a Task by applying the function inside this receiver.
+
+            - type: method
+              category: Transforming
+              name: orElse
+              header: orElse(transformation)
+              signature: |
+                @Task(α, β) => (α → Task(γ, β)) → Task(γ, β)
+              synopsis: |
+                Transforms the failure value of the Task into a new Task.
+
+            - type: method
+              category: Transforming
+              name: fold
+              header: fold(onRejection, onSucecss)
+              signature: |
+                @Task(α, β) => (α → γ), (β → γ) → Task(δ, γ)
+              synopsis: |
+                Applies a function to each side of the task.
+              seealso:
+                - data.task.Task.cata
+
+            - type: method
+              category: Transforming
+              name: cata
+              header: cata(pattern)
+              signature: |
+                @Task(α, β) => { Rejected: α → γ, Resolved: β → γ } → Task(δ, γ)
+              synopsis: |
+                Applies a function to each side of the task.
+
+            - type: method
+              category: Transforming
+              name: swap
+              header: swap()
+              signature: |
+                @Task(α, β) => Unit → Task(β, α)
+              synopsis: |
+                Swaps the values in the task.
+
+            - type: method
+              category: Transforming
+              name: bimap
+              header: bimap(onRejection, onSuccess)
+              signature: |
+                @Task(α, β) => (α → γ), (β → δ) → Task(γ, δ)
+              synopsis: |
+                Maps both sides of the task.
+
+            - type: method
+              category: Transforming
+              name: rejectedMap
+              header: rejectedMap(transformation)
+              signature: |
+                @Task(α, β) => (α → γ) → Task(γ, β)
+              synopsis: |
+                Maps the failure side of the task.
+
+            # Combining
+            - type: method
+              category: Combining
+              name: concat
+              header: concat(task)
+              signature: |
+                @Task(α, β) => Task(α, β) → Task(α, β)
+              synopsis: |
+                Selects the earlier of two Tasks.

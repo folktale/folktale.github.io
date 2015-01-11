@@ -78,9 +78,6 @@ program data.
       Safe optional values. Commonly used for modelling computations that may
       fail, or values that might not be available.
 
-* :doc:`data.stream <data/stream/index>`
-      Lazy generic streams.
-
 * :doc:`data.task <data/task/index>`
       A structure for capturing the effects of time-dependent values
       (asynchronous computations, latency, etc.) with automatic resource
@@ -95,21 +92,6 @@ program data.
 
    data/either/index
    data/maybe/index
-   data/stream/index
    data/task/index
    data/validation/index
    
-
-Macros
-------
-
-Sweet.js macros providing DSLs and new operators.
-
-* :doc:`macros.operators <macros/operators/index>`
-      A collection of Sweet.js operator macros for common algebraic
-      operations.
-
-.. toctree::
-   :hidden:
-
-   macros/operators/index
