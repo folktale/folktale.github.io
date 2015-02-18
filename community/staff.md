@@ -4,5 +4,5 @@ title: Community staff
 ---
 
  - **Quildreen Motta**  
-   Email: quildreen (at) gmail.com  
+   Email: queen (at) robotlolita.me  
    Twitter: [@robotlolita](https://twitter.com/robotlolita)
