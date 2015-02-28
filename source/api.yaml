@@ -740,7 +740,7 @@
       meta:
         Stability: 3 - Stable
         Portability: Portable
-        Version: 1.0.1
+        Version: 1.0.3
         npm package: "``core.inspect``"
         Repository: https://github.com/folktale/core.inspect
         Bug Tracker: https://github.com/folktale/core.inspect/issues
