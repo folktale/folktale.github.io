@@ -4,6 +4,14 @@ Module: ``core.arity``
 
 .. apimodule:: core.arity
 
+   Loading
+   -------
+
+   Require the ``core.arity`` package, after installing it::
+
+       var arity = require('core.arity')
+
+
    Why?
    ----
                
@@ -36,3 +44,5 @@ Module: ``core.arity``
       var binary = require('core.arity').binary;
 
       binary(cadd)(1, 2, 4) // => 3
+
+

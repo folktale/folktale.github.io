@@ -4,6 +4,14 @@ Module: ``core.operators``
 
 .. apimodule:: core.operators
 
+   Loading
+   -------
+
+   Require the ``core.operators`` package, after installing it::
+
+       var operators = require('core.operators')
+
+
    Why?
    ----
 
@@ -36,3 +44,5 @@ Module: ``core.operators``
        var lambda = require('core.lambda')
        people.sort(lambda.upon(compare, op.get('age'))).map(op.get('name'))
        // => ['Alice', 'Bob']
+
+

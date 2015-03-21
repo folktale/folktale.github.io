@@ -4,6 +4,14 @@ Module: ``core.lambda``
 
 .. apimodule:: core.lambda
 
+   Loading
+   -------
+
+   Require the ``core.lambda`` package, after installing it::
+
+       var lambda = require('core.lambda')
+
+
    Why?
    ----
 
@@ -13,6 +21,7 @@ Module: ``core.lambda``
    them. ``core.lambda`` fills this gap by providing tools for composing
    functions, altering the shape of a function in order to compose them in
    different ways, and currying/uncurrying.
+
 
 .. toctree::
    :hidden:

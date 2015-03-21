@@ -4,6 +4,20 @@ Module: ``core.inspect``
 
 .. apimodule:: core.inspect
 
+   Loading
+   -------
+
+   Require the ``core.inspect`` package, after installing it::
+
+       var inspect = require('core.inspect')
+
+   The module itself is a specialised form of :func:`core.inspect.show` that
+   has a limited ``maxDepth``::
+
+       inspect([1, [2, [3, [4, [5, [6]]]]]])
+       // => '[1, [2, [3, [4, [5, (...)]]]]]'
+
+
    Why?
    ----
                
