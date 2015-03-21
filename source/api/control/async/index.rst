@@ -4,8 +4,15 @@ Module: ``control.async``
 
 .. apimodule:: control.async
 
-   This module has to be given a valid :class:`data.task.Task` instance before
-   it can be used.
+   Loading
+   -------
+
+   Require the ``control.async`` package, after installing it, and give it a
+   valid :class:`data.task.Task` object to instantiate it::
+
+       var Task = require('data.task')
+       var Async = require('control.async')(Task)
+               
 
 .. toctree::
    :hidden:
