@@ -159,7 +159,7 @@
     - type: module
       name: operators
       meta:
-        Stability: 1 - Experimental
+        Stability: 3 - Stable
         Portability: Portable
         Version: 1.0.0
         npm package: "``core.operators``"
