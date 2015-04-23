@@ -12,7 +12,7 @@ concerns, please contact the [community staff](/community/staff.html).
 ## Support and discussion channels
 
  -  [The Folktale Mailing List](https://groups.google.com/forum/#!forum/folktale-discuss) on Google Groups;
- -  [The Folktale channel](https://gitter.im/folktale) on Gitter;
+ -  [The Folktale channel](https://gitter.im/folktale/discussion) on Gitter;
  -  The `#folktale` channel on the [Freenode](http://webchat.freenode.net/?channels=folktale) IRC network;
 
 
