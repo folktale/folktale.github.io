@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Folktale</title>
-    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Source+Code+Pro" rel="stylesheet">
+    <title>Folktale | A standad library for functional programming in JavaScript</title>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Source+Code+Pro|Lora:400,400i,700,700i" rel="stylesheet">
     <link href="css/screen.css" rel="stylesheet">
   </head>
   <body>
@@ -20,6 +20,10 @@
         </ul>
       </nav>
 
+      <div class="lead">
+        A standard library for <em>functional programming</em> in JavaScript
+      </div>
+
       <div class="install-instructions">
         <code class="npm-install">
           <span class="shell">$</span> <span class="command">npm install</span> --save <span class="name">folktale</span>
@@ -29,5 +33,73 @@
         </div>
       </div>
     </header>
+
+
+    <section class="why-section main-sections">
+      <h2 class="section-title">Why Folktale?</h2>
+
+      <div class="feature-boxes">
+        <div class="feature">
+          <h3 class="feature-title">Compositional</h3>
+
+          <p>Purity makes it easy to create new functionality by just putting smaller components together, and Folktale's combinators make it <em>easier</em>.</p>
+        </div>
+
+        <div class="feature">
+          <h3 class="feature-title">Better error handling</h3>
+
+          <p><strong>throw</strong> and <strong>try/catch</strong> are hard to reason about. Folktale's <strong>Maybe</strong> and <strong>Result</strong> support abstracting over errors, and simplify reasoning.</p>
+        </div>
+
+        <div class="feature">
+          <h3 class="feature-title">Concurrency</h3>
+
+          <p>Folktale provides <strong>Task</strong>, a way of declaring and combining asynchronous actions that supports automatic resource management.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-sections getting-started-section">
+      <p class="text">Start using functional programming to simplify your code today.</p>
+      <a href="#" class="button">Get started</a>
+    </section>
+
+    <footer>
+      <div class="project-info">
+        <p>Made with <span class="heart">❤️</span> by <a href="http://robotlolita.me">Quil</a>.</p>
+        <p class="small">Copyright (c) 2013-2017.</p>
+        <p class="small">Released under the permissive MIT licence.</p>
+        <p class="small">This website and docs are under CC BY 4.0.</p>
+      </div>
+
+      <nav class="footer-navigation">
+        <div class="nav-section">
+          <h3 class="title">Folktale</h3>
+          <ul>
+            <li><a href="#">Source code</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Releases</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3 class="title">Community</h3>
+          <ul>
+            <li><a href="#">Code of conduct</a></li>
+            <li><a href="#">Gitter chat</a></li>
+            <li><a href="#">Twitter</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3 class="title">Support</h3>
+          <ul>
+            <li><a href="#">Report issues</a></li>
+            <li><a href="#">Suggest features</a></li>
+            <li><a href="#">Contribute</a></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
   </body>
 </html>

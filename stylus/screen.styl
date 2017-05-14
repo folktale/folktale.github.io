@@ -8,6 +8,13 @@ ul, ol {
   list-style: none;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-family: inherit;
+  font-weight: normal;
+  line-height: 100%;
+}
+
 a {
   text-decoration: none;
 }
@@ -19,13 +26,23 @@ concrete = #95a5a6
 abestos = #7f8c8d
 silver = #bdc3c7
 clouds = #ecf0f1
+greyish = #d6dfe1
 
 heading-font = "Libre Baskerville", Georgia, serif;
 mono-font = "Source Code Pro", monospace;
+body-font = "Lora", Georgia, serif;
+sans-font = "Helvetica", "Verdana", sans-serif;
 
 code {
   font-family: mono-font;
 }
+
+body {
+  font-family: body-font;
+  color: #5f5f5f;
+  font-size: 16px;
+}
+
 
 
 header {
@@ -33,7 +50,7 @@ header {
   background: clouds url('../images/top.png') no-repeat bottom center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  border-bottom: 1px solid silver;
 
   #top-navigation {
     padding: 2em 10%;
@@ -74,11 +91,25 @@ header {
     }
   }
 
+  .lead {
+    flex-grow: 0;
+    align-self: center;
+    margin-top: 50px;
+    font-size: 24px;
+    color: abestos;
+    text-align: center;
+    text-shadow: 1px 0px 0px rgba(255, 255, 255, 0.7);
+
+    em {
+      color: wet-asphalt;
+    }
+  }
+
 
   .install-instructions {
     flex-grow: 0;
     align-self: center;
-    margin-bottom: 150px;
+    margin-top: 200px;
     font-family: mono-font;
     border: 1px dotted concrete;
   }
@@ -111,6 +142,148 @@ header {
       color: #fff;
       padding: 0 0.5em;
       letter-spacing: -0.01em;
+    }
+  }
+}
+
+
+.main-sections {
+  max-width: 960px;
+  margin: 3em auto 0 auto;
+
+  .section-title {
+    font-family: heading-font;
+    color: wet-asphalt;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5em;
+    text-align: center;
+  
+    &:after {
+      content: ' ';
+      width: 2em;
+      height: 1px;
+      display: block;
+      border-bottom: 2px solid greyish;
+      margin-bottom: 10px;
+      margin: 0.3em auto 0.5em auto;
+    }
+  }
+}
+
+.feature-boxes {
+  display: flex;
+  justify-content: space-around;
+
+  .feature {
+    flex-grow: 0;
+    width: 33%;
+    text-align: center;
+    padding: 0 2em;
+  }
+
+  .feature-title {
+    font-weight: bold;
+    margin: 0.5em 0 1.5em 0;
+    text-transform: uppercase;
+    font-family: sans-font;
+    letter-spacing: 0.03em;
+  }
+}
+
+
+.getting-started-section {
+  border-top: 1px solid clouds;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4em;
+  padding: 2em 0;
+  font-size: 18px;
+
+  .text {
+    flex-grow: 1;
+    text-align: left;
+  }
+
+  .button {
+    flex-grow: 0;
+    border: 1px solid wet-asphalt;
+    padding: 0.5em 1em;
+    font-family: sans-font;
+    color: wet-asphalt;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 2em;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      background: wet-asphalt;
+      color: #fff;
+    }
+  }
+}
+
+
+footer {
+  margin-top: 3em;
+  padding: 3em 10% 4em 10%;
+  background: wet-asphalt;
+  color: #fff;
+  font-family: sans-font;
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    color: #fff;
+  }
+
+  .project-info {
+    flex-grow: 1;
+    width: 40%;
+    letter-spacing: 0.05em;
+    line-height: 1.6em;
+
+    a {
+      text-decoration: underline;
+    }
+
+    .small {
+      font-size: 0.8em;
+      line-height: 1.3em;
+      color: silver;
+    }
+  }
+
+  .heart {
+    color: #e74c3c;
+  }
+
+  .footer-navigation {
+    flex-grow: 1;
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
+
+    .nav-section {
+      flex-shrink: 1;
+      margin-left: 4em;
+      line-height: 1.5em;
+    }
+
+    .title {
+      font-weight: bold;
+      letter-spacing: 0.02em;
+      font-size: 1.2em;
+      margin-bottom: 1em;
+      text-transform: uppercase;
+      color: concrete;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   }
 }
