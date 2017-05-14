@@ -166,6 +166,7 @@ header .package-install a {
 .getting-started-section .text {
   flex-grow: 1;
   text-align: left;
+  font-size: 22px;
 }
 .getting-started-section .button {
   flex-grow: 0;
