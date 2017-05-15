@@ -77,6 +77,14 @@ body {
   list-style: disc;
   margin: 0.5em 0em 1em 1.5em;
 }
+.content .content-area a {
+  color: #2980b9;
+  transition: color 0.2s ease-out;
+}
+.content .content-area a:hover {
+  color: #3498db;
+  text-decoration: underline;
+}
 .boxes-3,
 .main-page .feature-boxes {
   display: flex;
@@ -99,6 +107,16 @@ body {
   text-transform: uppercase;
   font-family: "Helvetica", "Verdana", sans-serif;
   letter-spacing: 0.03em;
+}
+.boxes-3 a,
+.main-page .feature-boxes a {
+  color: #2980b9;
+  transition: color 0.2s ease-out;
+}
+.boxes-3 a:hover,
+.main-page .feature-boxes a:hover {
+  color: #3498db;
+  text-decoration: underline;
 }
 .separated-section {
   border-top: 1px solid #ecf0f1;
@@ -314,6 +332,14 @@ footer .footer-navigation a:hover {
 .main-page .main-sections .section-title:after .content-area ul {
   list-style: disc;
   margin: 0.5em 0em 1em 1.5em;
+}
+.main-page .main-sections .section-title:after .content-area a {
+  color: #2980b9;
+  transition: color 0.2s ease-out;
+}
+.main-page .main-sections .section-title:after .content-area a:hover {
+  color: #3498db;
+  text-decoration: underline;
 }
 .main-page .getting-started-section {
   border-top: 1px solid #ecf0f1;

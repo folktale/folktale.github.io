@@ -1,5 +1,5 @@
 name: Folktale
-pygments: true
+highlighter: 'rouge'
 
 navigation:
   - text: Docs
