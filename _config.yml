@@ -2,12 +2,12 @@ name: Folktale
 pygments: true
 
 navigation:
-  - text: Overview
-    url: /index.html
+  - text: Docs
+    url: /docs
     group: home
-  - text: Documentation
-    url: http://docs.folktalejs.org
+  - text: Support
+    url: /support
     group: docs
-  - text: Community
-    url: /community/index.html
-    group: community
+  - text: Code
+    url: /code
+    group: code
