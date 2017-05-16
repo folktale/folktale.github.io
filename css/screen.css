@@ -45,11 +45,11 @@ body {
 }
 .content .title:before {
   content: ' ';
-  width: 2em;
+  width: 1.5em;
   height: 1px;
   display: block;
-  border-bottom: 3px solid #d6dfe1;
-  margin: 0.5em 0em 0.3em -0.6em;
+  border-bottom: 2px solid #d6dfe1;
+  margin: 0.5em 0em 0.1em -0.5em;
 }
 .content .section-title {
   font-family: "Helvetica", "Verdana", sans-serif;
@@ -146,7 +146,8 @@ box-sizing
   padding: 1em;
 }
 .breadcrumbs {
-  margin-bottom: -1.5em;
+  position: relative;
+  top: 1.5em;
   font-size: 11px;
   font-family: "Helvetica", "Verdana", sans-serif;
   color: #95a5a6;
@@ -335,11 +336,11 @@ footer .footer-navigation a:hover {
 }
 .main-page .main-sections .section-title:after .title:before {
   content: ' ';
-  width: 2em;
+  width: 1.5em;
   height: 1px;
   display: block;
-  border-bottom: 3px solid #d6dfe1;
-  margin: 0.5em 0em 0.3em -0.6em;
+  border-bottom: 2px solid #d6dfe1;
+  margin: 0.5em 0em 0.1em -0.5em;
 }
 .main-page .main-sections .section-title:after .section-title {
   font-family: "Helvetica", "Verdana", sans-serif;
