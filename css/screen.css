@@ -145,6 +145,24 @@ box-sizing
   background: #ecf0f1;
   padding: 1em;
 }
+.breadcrumbs {
+  margin-bottom: -1.5em;
+  font-size: 11px;
+  font-family: "Helvetica", "Verdana", sans-serif;
+  color: #95a5a6;
+  letter-spacing: 0.02em;
+}
+.breadcrumbs .separator {
+  color: #bdc3c7;
+}
+.breadcrumbs a {
+  color: #2980b9;
+  transition: color 0.2s ease-out;
+}
+.breadcrumbs a:hover {
+  color: #3498db;
+  text-decoration: underline;
+}
 header {
   display: flex;
   flex-direction: column;
