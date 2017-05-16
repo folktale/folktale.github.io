@@ -15,9 +15,14 @@ body {
   content();
 }
 
+.borderless {
+  border: none !important;
+}
+
 .boxes-3 {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 
   .box {
     flex-grow: 0;
@@ -25,6 +30,7 @@ body {
     text-align: center;
     padding: 0 2em;
     align-self: flex-start;
+    box-sizing: 
   }
 
   .box-title {

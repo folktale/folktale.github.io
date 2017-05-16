@@ -1,13 +1,16 @@
 name: Folktale
 highlighter: 'rouge'
 
+version:
+  package: https://github.com/origamitower/folktale/releases/download/release%2F2.0.0-beta1/folktale-2.0.0-beta1.zip
+
 navigation:
   - text: Docs
     url: /docs
-    group: home
+    group: docs
   - text: Support
     url: /support
-    group: docs
-  - text: Code
+    group: support
+  - text: Projects
     url: /code
     group: code
