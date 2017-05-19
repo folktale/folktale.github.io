@@ -97,6 +97,16 @@ body {
   color: #3498db;
   text-decoration: underline;
 }
+.content .content-area .highlight {
+  border-top: 2px solid #ecf0f1;
+  border-bottom: 1px solid #ecf0f1;
+  background: #f5f2f0;
+  padding: 1em;
+  font-size: 14px;
+  line-height: 16px;
+  color: #7f8c8d;
+  margin: 0.5em 0 1em 0;
+}
 .borderless {
   border: none !important;
 }
@@ -387,6 +397,16 @@ footer .footer-navigation a:hover {
 .main-page .main-sections .section-title:after .content-area a:hover {
   color: #3498db;
   text-decoration: underline;
+}
+.main-page .main-sections .section-title:after .content-area .highlight {
+  border-top: 2px solid #ecf0f1;
+  border-bottom: 1px solid #ecf0f1;
+  background: #f5f2f0;
+  padding: 1em;
+  font-size: 14px;
+  line-height: 16px;
+  color: #7f8c8d;
+  margin: 0.5em 0 1em 0;
 }
 .main-page .getting-started-section {
   border-top: 1px solid #ecf0f1;
