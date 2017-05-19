@@ -113,7 +113,7 @@ body {
 .boxes-3,
 .main-page .feature-boxes {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 .boxes-3 .box,
