@@ -89,7 +89,7 @@ body {
   .navigation-toc {
     flex-grow: 0;
     width: 200px;
-    margin-right: 2em;
+    margin-right: 4em;
     font-family: sans-font;
     font-size: 0.9em;
     margin-top: 1em;
@@ -135,5 +135,9 @@ body {
 
   .content-panel {
     flex-shrink: 1;
+
+    .title::before {
+      margin-left: 0px;
+    }
   }
 }

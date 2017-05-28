@@ -184,7 +184,7 @@ body {
 .content-with-sidebar .navigation-toc {
   flex-grow: 0;
   width: 200px;
-  margin-right: 2em;
+  margin-right: 4em;
   font-family: "Helvetica", "Verdana", sans-serif;
   font-size: 0.9em;
   margin-top: 1em;
@@ -228,6 +228,9 @@ body {
 }
 .content-with-sidebar .content-panel {
   flex-shrink: 1;
+}
+.content-with-sidebar .content-panel .title::before {
+  margin-left: 0px;
 }
 header {
   display: flex;
