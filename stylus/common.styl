@@ -78,3 +78,62 @@ body {
     link()
   }
 }
+
+.content-with-sidebar {
+  max-width: 960px;
+
+  .row-with-sidebar {
+    display: flex;
+  }
+
+  .navigation-toc {
+    flex-grow: 0;
+    width: 200px;
+    margin-right: 2em;
+    font-family: sans-font;
+    font-size: 0.9em;
+    margin-top: 1em;
+    
+    .toc-section-title {
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 1em 0 0.4em 0;
+      color: silver;
+    }
+
+    .toc-items {
+      margin-bottom: 2em;
+    }
+
+    .toc-item {
+      padding: 0.3em 0;
+      transition: padding 0.2s ease-out;
+
+      &:hover {
+        padding-left: 9px;
+        border-left: 3px solid lighten(peter-river, 50%);
+
+        a, a:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    a {
+      link();
+    }
+
+    .toc-current-item, .toc-current-item:hover {
+      border-left: 3px solid peter-river;
+      padding-left: 7px;
+    }
+
+    .toc-current-item > a {
+      font-weight: bold;
+    }
+  }
+
+  .content-panel {
+    flex-shrink: 1;
+  }
+}

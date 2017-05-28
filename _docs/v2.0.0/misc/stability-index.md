@@ -1,0 +1,3 @@
+---
+title: Stability index
+---

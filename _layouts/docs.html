@@ -1,0 +1,42 @@
+---
+layout: page
+---
+
+<article class="content content-with-sidebar">
+  <div class="row-with-sidebar">
+    <aside class="sidebar navigation-toc">
+      {% for section in site.data.docs %}
+        <h4 class="toc-section-title">{{ section.title }}</h4>
+        <ul class="toc-items">
+          {% for path in section.docs %}
+            {% assign page_url = path | prepend:"/docs/" | append:".html" %}
+            {% assign p = site.docs | where:"url", page_url | first %}
+            <li class="toc-item {% if page_url == page.url %}toc-current-item{% endif %}">
+              <a href="{{ p.url }}">{{ p.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </aside>
+
+    <div class="content-panel">
+      <div class="breadcrumbs">
+        {% unless page.breadcrumb.empty? %}
+          {% for link in page.breadcrumb %}
+            <span class="separator"> / </span>
+            {% if link.href %}
+              <a class="breadcrumb-item" href="{{ link.href }}">{{ link.text }}</a>
+            {% else %}
+              <span class="breadcrumb-item">{{ link.text }}</span>
+            {% endif %}
+          {% endfor %}
+        {% endunless %}
+      </div>
+      <h2 class="title">{{ page.title }}</h2>
+            
+      <div class="content-area">
+        {{ content | markdownify }}
+      </div>
+    </div>
+  </div>
+</article>

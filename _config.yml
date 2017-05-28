@@ -7,8 +7,15 @@ version:
 
 collections:
   docs:
-    permalink: /:collection/:path/
+    permalink: /:collection/:path.html
     output: true
+
+defaults:
+  - scope:
+      path: _docs
+      type: docs
+    values:
+      layout: docs
 
 navigation:
   - text: Docs
