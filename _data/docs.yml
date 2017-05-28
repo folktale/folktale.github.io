@@ -1,0 +1,38 @@
+- title: Folktale 2
+  docs:
+    - v2.0.0/release-notes
+    - v2.0.0/getting-started
+    - v2.0.0/api
+    - v2.0.0/stability-index
+    - v2.0.0/changelog
+    - v2.0.0/known-issues
+
+- title: Migrating
+  docs:
+    - v2.0.0/migrating/from-core.arity
+    - v2.0.0/migrating/from-core.lambda
+    - v2.0.0/migrating/from-control.async
+    - v2.0.0/migrating/from-data.either
+    - v2.0.0/migrating/from-data.maybe
+    - v2.0.0/migrating/from-data.task
+    - v2.0.0/migrating/from-data.validation
+
+- title: Support
+  docs:
+    - support/faq
+    - support/bugs
+    - support/feature-request
+
+- title: Contributing
+  docs:
+    - v2.0.0/contributing/design-principles
+    - v2.0.0/contributing/setup
+    - v2.0.0/contributing/organisation
+    - v2.0.0/contributing/git-guidelines
+    - v2.0.0/contributing/code
+    - v2.0.0/contributing/documentation
+    - v2.0.0/contributing/tests
+
+- title: Legacy
+  docs:
+    - legacy/1.x

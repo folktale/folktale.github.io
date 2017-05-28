@@ -1,8 +1,14 @@
 name: Folktale
 highlighter: 'rouge'
+markdown: kramdown
 
 version:
   package: https://github.com/origamitower/folktale/releases/download/release%2F2.0.0-beta1/folktale-2.0.0-beta1.zip
+
+collections:
+  docs:
+    permalink: /:collection/:path/
+    output: true
 
 navigation:
   - text: Docs
