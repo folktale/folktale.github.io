@@ -1,3 +1,3 @@
 ---
-title: Migrating from Core.Arity to Folktale 2
+title: Migrating from Core.Arity
 ---

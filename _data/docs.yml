@@ -6,6 +6,15 @@
     - v2.0.0/changelog
     - v2.0.0/known-issues
 
+- title: Conceptual docs
+  docs:
+    - v2.0.0/concepts/lambda
+    - v2.0.0/concepts/tagged-unions
+    - v2.0.0/concepts/error-handling
+    - v2.0.0/concepts/validation
+    - v2.0.0/concepts/concurrency
+    - v2.0.0/concepts/fantasy-land
+
 - title: Migrating
   docs:
     - v2.0.0/migrating/from-core.arity
@@ -36,6 +45,7 @@
     - v2.0.0/misc/organisation
     - v2.0.0/misc/git-guidelines
     - v2.0.0/misc/coding-style
+    - v2.0.0/misc/glossary
 
 - title: Legacy
   docs:

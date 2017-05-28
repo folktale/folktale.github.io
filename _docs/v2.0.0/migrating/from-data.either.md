@@ -1,3 +1,3 @@
 ---
-title: Migrating from Data.Either to Folktale 2
+title: Migrating from Data.Either
 ---

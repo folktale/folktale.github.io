@@ -72,6 +72,18 @@ content() {
       color: abestos;
     }
 
+    dt {
+      font-weight: bold;
+      color: concrete;
+      text-transform: uppercase;
+      margin: 0.5em 0 0.3em 0;
+      font-family: sans-font;
+    }
+
+    dd {
+      margin: 0 0 1.5em 1.5em;
+    }
+
     a {
       link();
     }
@@ -85,6 +97,42 @@ content() {
       line-height: 16px;
       color: abestos;
       margin: 0.5em 0 1em 0;
+    }
+
+    code.highlighter-rouge {
+      background: #f5f2f0;
+      padding: 0.1em 0.2em;
+      font-family: mono-font;
+      font-size: 0.9em;
+      color: abestos;
+    }
+
+    .note, .warning {
+      border-left: 5px solid concrete;
+      padding: 0.5em 0 0.5em 1em;
+      margin-bottom: 1.5em;
+      background: clouds;
+
+      & > p:last-child {
+        margin-bottom: 0;
+      }
+
+      & > p:first-child > strong:first-child {
+        text-transform: uppercase;
+        letter-spacing: 0.01em;
+        color: concrete;
+        margin-bottom: 0.2em;
+        font-family: sans-font;
+      }
+    }
+
+    .warning {
+      border-left-color: lighten(carrot, 50%);
+      background: lighten(sunflower, 90%)
+
+      & > p:first-child > strong:first-child {
+        color: lighten(carrot, 50%);
+      }
     }
   }
 }
