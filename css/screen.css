@@ -71,6 +71,9 @@ body {
   font-size: 18px;
   line-height: 1.4em;
 }
+.content .content-area .special-content {
+  font-size: 16px;
+}
 .content .content-area p {
   margin-bottom: 1.5em;
 }
@@ -347,7 +350,8 @@ header #top-navigation .project-links a {
   color: #95a5a6;
   transition: all 0.2s ease-out;
 }
-header #top-navigation .project-links a:hover {
+header #top-navigation .project-links a:hover,
+header #top-navigation .project-links a.active {
   color: #34495e;
   border-bottom: 3px solid #34495e;
 }
@@ -510,6 +514,9 @@ footer .footer-navigation a:hover {
 .main-page .main-sections .section-title:after .content-area {
   font-size: 18px;
   line-height: 1.4em;
+}
+.main-page .main-sections .section-title:after .content-area .special-content {
+  font-size: 16px;
 }
 .main-page .main-sections .section-title:after .content-area p {
   margin-bottom: 1.5em;

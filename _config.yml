@@ -16,14 +16,4 @@ defaults:
       type: docs
     values:
       layout: docs
-
-navigation:
-  - text: Docs
-    url: /docs
-    group: docs
-  - text: Support
-    url: /support
-    group: support
-  - text: Projects
-    url: /code
-    group: code
+      group: docs

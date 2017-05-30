@@ -6,7 +6,15 @@ layout: page
   <div class="row-with-sidebar">
     <aside class="sidebar navigation-toc">
       {% for section in site.data.docs %}
-        <h4 class="toc-section-title">{{ section.title }}</h4>
+        <h4 class="toc-section-title">
+          {% if section.entry %}
+            {% assign page_url = section.entry | prepend:"/docs/" | append:".html" %}
+            {% assign p = site.docs | where:"url", page_url | first %}
+            <a class="{% if page_url == page.url %}toc-current-section{% endif %}" href="{{ page_url }}">{{ section.title }}</a>
+          {% else %}
+            {{ section.title }}
+          {% endif %}
+        </h4>
         <ul class="toc-items">
           {% for path in section.docs %}
             {% assign page_url = path | prepend:"/docs/" | append:".html" %}

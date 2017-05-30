@@ -9,8 +9,8 @@
     <meta name="keywords"
           content="fantasy-land, monads, open source, javascript library, functional programming">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Source+Code+Pro|Lora:400,400i,700,700i" rel="stylesheet">
-    <link href="/css/syntax.css" rel="stylesheet">
-    <link href="/css/screen.css" rel="stylesheet">
+    <link href="{% link /css/syntax.css %}" rel="stylesheet">
+    <link href="{% link /css/screen.css %}" rel="stylesheet">
   </head>
   <body class="{{ page.class }}">
     {{ content }}
@@ -27,8 +27,8 @@
         <div class="nav-section">
           <h3 class="title">Folktale</h3>
           <ul>
-            <li><a href="/code.html">Projects</a></li>
-            <li><a href="/docs">Documentation</a></li>
+            <li><a href="{% link code.html %}">Projects</a></li>
+            <li><a href="{% link _docs/v2.0.0/index.md %}">Documentation</a></li>
             <li><a href="https://github.com/origamitower/folktale/releases">Releases</a></li>
           </ul>
         </div>
@@ -36,7 +36,7 @@
         <div class="nav-section">
           <h3 class="title">Community</h3>
           <ul>
-            <li><a href="/coc.html">Code of conduct</a></li>
+            <li><a href="{% link coc.html %}">Code of conduct</a></li>
             <li><a href="https://gitter.im/folktale/discussion">Gitter chat</a></li>
             <li><a href="https://twitter.com/OrigamiTower">Twitter</a></li>
           </ul>
@@ -45,9 +45,9 @@
         <div class="nav-section">
           <h3 class="title">Support</h3>
           <ul>
-            <li><a href="/support/issues.html">Report issues</a></li>
-            <li><a href="/support/features.html">Suggest features</a></li>
-            <li><a href="/support/contribute.html">Contribute</a></li>
+            <li><a href="{% link _docs/support/bugs.md %}">Report issues</a></li>
+            <li><a href="{% link _docs/support/feature-request.md %}">Suggest features</a></li>
+            <li><a href="{% link _docs/v2.0.0/contributing/index.md %}">Contribute</a></li>
           </ul>
         </div>
       </nav>

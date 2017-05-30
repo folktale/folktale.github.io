@@ -1,5 +1,6 @@
 ---
 title: Requesting features
+group: support
 ---
 
 Folktale doesn't do everything, so more often than not you'll find something

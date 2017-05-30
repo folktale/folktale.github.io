@@ -1,3 +1,0 @@
----
-title: Simplifying error handling
----

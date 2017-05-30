@@ -1,5 +1,6 @@
 ---
 title: Reporting issues
+group: support
 ---
 
 Sometimes things don't work as well as they should, or we can't make them work

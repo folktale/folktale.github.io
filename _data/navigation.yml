@@ -1,0 +1,9 @@
+- text: Docs
+  url: /docs/v2.0.0/index.html
+  group: docs
+- text: Support
+  url: /docs/support/index.html
+  group: support
+- text: Projects
+  url: /code
+  group: code
