@@ -7,7 +7,7 @@ version:
 
 collections:
   docs:
-    permalink: /:collection/:path.html
+    permalink: /:collection/:path/
     output: true
 
 defaults:

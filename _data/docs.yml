@@ -1,5 +1,5 @@
 - title: Folktale 2.0.0 docs
-  entry: v2.0.0/index
+  entry: v2.0.0
   docs:
     - v2.0.0/release-notes
     - v2.0.0/getting-started
@@ -8,7 +8,7 @@
     - v2.0.0/known-issues
 
 - title: Migrating
-  entry: v2.0.0/migrating/index
+  entry: v2.0.0/migrating
   docs:
     - v2.0.0/migrating/from-core.arity
     - v2.0.0/migrating/from-core.lambda
@@ -18,14 +18,14 @@
     - v2.0.0/migrating/from-data.validation
 
 - title: Support
-  entry: support/index
+  entry: support
   docs:
     - support/faq
     - support/bugs
     - support/feature-request
 
 - title: Contributing
-  entry: v2.0.0/contributing/index
+  entry: v2.0.0/contributing
   docs:
     - v2.0.0/contributing/setup
     - v2.0.0/contributing/bugfixes

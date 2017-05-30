@@ -1,6 +1,7 @@
 ---
 title: Support
 group: support
+permalink: /docs/support/
 ---
 
 Have a question about something you can't find in the documentation? Try one of the following resources.

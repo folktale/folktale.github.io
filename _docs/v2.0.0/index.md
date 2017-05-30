@@ -1,5 +1,6 @@
 ---
 title:  Documentation
+permalink: /docs/v2.0.0/
 ---
 
 Here you'll find the documentation for Folktale 2.0.0. This release is guided by some [design principles]({% link _docs/v2.0.0/misc/design-principles.md %}), and all code is categorised according to [stability rules]({% link _docs/v2.0.0/misc/stability-index.md %}), which helps deciding whether you can rely on a feature or not. [Documentation for older versions](#documentation-for-older-releases) can be found at the end of this page.
