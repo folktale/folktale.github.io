@@ -72,6 +72,27 @@ content() {
       color: abestos;
     }
 
+    h3 {
+      font-size: 24px;
+      letter-spacing: 0.01em;
+      margin: 2em 0 1em 0;
+      color: darken(abestos, 30%);
+      font-family: sans-font;
+      font-weight: bold;
+    }
+
+    h4 {
+      font-size: 20px;
+      letter-spacing: 0.02em;
+      margin: 1.5em 0 0.5em 0;
+      color: concrete;
+      font-family: heading-font;
+      font-weight: 300;
+      text-transform: uppercase;
+      border-bottom: 1px solid clouds;
+      padding-bottom: 0.3em;
+    }
+
     dt {
       font-weight: bold;
       color: concrete;
@@ -97,6 +118,11 @@ content() {
       line-height: 16px;
       color: abestos;
       margin: 0.5em 0 1em 0;
+
+      .c1 {
+        color: silver;
+        font-style: italic;
+      }
     }
 
     code.highlighter-rouge {
@@ -132,6 +158,23 @@ content() {
 
       & > p:first-child > strong:first-child {
         color: lighten(carrot, 50%);
+      }
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0px;
+      border: 1px solid clouds;
+      width: 100%;
+      margin-bottom: 1em;
+
+      th, td {
+        padding: 1em;
+        border-bottom: 1px solid clouds;
+      }
+
+      th {
+        background: clouds;
       }
     }
   }
