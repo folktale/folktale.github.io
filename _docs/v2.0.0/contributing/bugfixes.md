@@ -57,6 +57,19 @@ Bugs generally happen because we hadn't thought of that case, and there was noth
 So, in order to avoid that, you should include some tests to check the particular behaviour you're fixing. These tests should **fail** before applying your change, and pass after applying your change. We have a separated [guide on how to write tests for Folktale]({% link _docs/v2.0.0/contributing/tests.md %}).
 
 
+## Crediting yourself
+
+If it's your first time contributing to the project, please take your time to add your name to the `CONTRIBUTORS.md` file at the root of the project as well. Just add a new line with the following format:
+
+    - Your Preferred Name (Your URL) <email@address>
+
+For example:
+
+    - Quil (http://robotlolita.me/) <queen@robotlolita.me>
+
+All fields besides the name are optional. As for the name, just pick any that you're comfortable with being public (it can be your GitHub username, for example). It doesn't have to be your real name.
+
+
 ## Before proposing your changes…
 
 Make sure all existing tests pass by running:
