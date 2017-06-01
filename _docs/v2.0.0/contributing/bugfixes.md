@@ -57,6 +57,17 @@ Bugs generally happen because we hadn't thought of that case, and there was noth
 So, in order to avoid that, you should include some tests to check the particular behaviour you're fixing. These tests should **fail** before applying your change, and pass after applying your change. We have a separated [guide on how to write tests for Folktale]({% link _docs/v2.0.0/contributing/tests.md %}).
 
 
+## Before proposing your changes…
+
+Make sure all existing tests pass by running:
+
+    $ make test-all
+
+Make sure your code conforms to the coding style used by the project by running:
+
+    $ make lint
+
+
 ## Proposing your changes
 
 Once you're done making your changes, [open a pull request](https://help.github.com/articles/creating-a-pull-request/) to propose your changes. You may also open a pull request for work in progress if you want to discuss the changes, or want guidance on some aspect of the code.
