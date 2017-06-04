@@ -2,7 +2,7 @@
 title: Coding style
 ---
 
-> **TODO**  
+> **TODO**
 > This section is a stub and needs to be improved.
 {:.warning}
 

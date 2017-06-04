@@ -40,7 +40,7 @@ development environment for Windows.
 
 Below are instructions to install Make on common systems:
 
-> **TODO**  
+> **TODO**
 > Provide instructions for OS/X and *BSD systems.
 
 ### Debian/Ubuntu (Linux):

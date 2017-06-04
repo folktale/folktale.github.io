@@ -7,7 +7,7 @@ Hi~☆! Thanks for the interest in contributing to Folktale! Your help is much a
 
 First of all…
 
-> **Code of Conduct**  
+> **Code of Conduct**
 > Folktale aims to be a friendly, welcoming, and inclusive community, so we have a few rules in place to ensure that. In short: **be respectful**, but you can see the full details of expectations and enforcement on the [Code of Conduct]({% link coc.html %}) page.
 {:.note}
 

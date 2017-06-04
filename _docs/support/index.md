@@ -6,7 +6,7 @@ permalink: /docs/support/
 
 Have a question about something you can't find in the documentation? Try one of the following resources.
 
-> **Code of Conduct**  
+> **Code of Conduct**
 > Folktale aims to be a friendly, welcoming, and inclusive community, so we have a few rules in place to ensure that. In short: **be respectful**, but you can see the full details of expectations and enforcement on the [Code of Conduct]({% link coc.html %}) page.
 {:.note}
 

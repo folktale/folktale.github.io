@@ -14,7 +14,7 @@ While we do our best to write correct software, sometimes bugs will escape our t
 
 ## Before you start…
 
-Bugs are controlled in the [GitHub issue tracker](https://github.com/origamitower/folktale), and that's also how we track work on fixing each of them. If an issue is marked as `in progress`, then someone is already working on it. If it's not, please comment on the issue so we can assign you to it. That makes it less likely that two people'd work on the same issue :)
+Bugs are controlled in the [GitHub issue tracker](https://github.com/origamitower/folktale/issues), and that's also how we track work on fixing each of them. If an issue is marked as `in progress`, then someone is already working on it. If it's not, please comment on the issue so we can assign you to it. That makes it less likely that two people'd work on the same issue :)
 
 
 ## Setting things up for the first time
@@ -30,7 +30,7 @@ Once you've got everything installed, and after you've cloned the repository, yo
     $ git submodule update
     $ make tools
 
-> **NOTE**  
+> **NOTE**
 > The `$` is not part of the command, but rather indicates that you should run the command with your regular user account, instead of an administrator account.
 {:.note}
 
@@ -65,7 +65,7 @@ If it's your first time contributing to the project, please take your time to ad
 
 For example:
 
-    - Quil (http://robotlolita.me/) <queen@robotlolita.me>
+    - Quil (http://robotlolita.me/) <queen at robotlolita.me>
 
 All fields besides the name are optional. As for the name, just pick any that you're comfortable with being public (it can be your GitHub username, for example). It doesn't have to be your real name.
 

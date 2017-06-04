@@ -16,7 +16,7 @@ This document provides answers to some common questions people have when using F
 
 ### Why do I get an error saying "`.apply` is not a function"?
 
-> **Short answer**  
+> **Short answer**
 > Folktale unrolls application of curried functions, so if you pass more arguments than what a function takes, that function might try passing some of those arguments to its return value.
 {:.note}
 
@@ -90,7 +90,7 @@ flip(math3(4, 2))(1, 3)
 
 ### Why is there no `.chain` for Validation?
 
-> **Short answer**  
+> **Short answer**
 > The way Validation's `.ap` method works makes it impossible to implement the [Monad](https://github.com/fantasyland/fantasy-land#monad) interface (`.chain`). You might either want to use Either/Result, or rethink how you're approaching the problem.
 {:.note}
 
@@ -163,7 +163,7 @@ Since you're likely to need both in you application, Folktale divides that in Ei
 
 ### Can I use Folktale with Flow or TypeScript?
 
-> **Short answer**  
+> **Short answer**
 > Yes, but there are no type definitions for them currently, and some of the features in Folktale require more advanced type system concepts that they don't support.
 {:.note}
 
@@ -173,14 +173,14 @@ Better support for some of the features that Folktale uses depends on the concep
 
 That said, [*basic* support for TypeScript is planned](https://github.com/origamitower/folktale/issues/65) for the initial 2.0 release. Right now you can use it if you explicitly declare the module to have the `any` type (or rely on implicit `any`, but that's even less ideal). Not great, but works. Support for Flow *might* come after that, but no guarantees.
 
-> **NOTES**  
+> **NOTES**
 > - [@jongold](https://github.com/jongold) has started a project with [Flow definitions for Folktale 1](https://github.com/jongold/folktale-flow). Currently it has definitions for Data.Task.
 {:.note}
 
 
 ### Do Folktale structures implement Fantasy Land?
 
-> **Short answer**  
+> **Short answer**
 > Yes. Folktale 1 implements fantasy-land@1.x, and Folktale 2 implements fantasy-land@1.x up to fantasy-land@3.x, wherever possible.
 {:.note}
 
@@ -217,7 +217,7 @@ Folktale 1 implements only the non-prefixed methods of Fantasy Land v0.x~1.x.
 
 Folktale 2 implements *both* unprefixed and prefixed methods, and thus supports Fantasy Land v0.x~3.x.
 
-> **NOTE**  
+> **NOTE**
 > The structures implement the old version of `.ap` (`fn.ap(value)`), and the new version of `."fantasy-land/ap"` (`value['fantasy-land/ap'](fn)`). Fantasy Land actually made this breaking change without bumping the major version first. If some library expects the unprefixed method to implement the new argument order, things won't work nicely.
 {:.note}
 
@@ -244,7 +244,7 @@ Folktale 2 implements *both* unprefixed and prefixed methods, and thus supports 
 | [Profunctor][]      | 🚫        | 🚫         | 🚫             | 🚫        | 🚫          |
 
 
-> **NOTES**  
+> **NOTES**
 > - ✅: The algebra is implemented for this structure;
 > - ❌: The algebra is not implemented for this structure;
 > - 🚫: The algebra can't be implemented for this structure;

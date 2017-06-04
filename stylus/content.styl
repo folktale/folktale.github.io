@@ -123,7 +123,7 @@ content() {
       color: abestos;
       margin: 0.5em 0 1em 0;
 
-      .c1 {
+      .c1, .cm {
         color: silver;
         font-style: italic;
       }
@@ -139,7 +139,7 @@ content() {
 
     .note, .warning {
       border-left: 5px solid concrete;
-      padding: 0.5em 0 0.5em 1em;
+      padding: 1em;
       margin-bottom: 1.5em;
       background: clouds;
 
@@ -151,8 +151,10 @@ content() {
         text-transform: uppercase;
         letter-spacing: 0.01em;
         color: concrete;
-        margin-bottom: 0.2em;
+        margin-bottom: 0.6em;
         font-family: sans-font;
+        display: block;
+        border-bottom: 1px  solid darken(clouds, 5%);
       }
     }
 
