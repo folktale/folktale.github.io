@@ -1,5 +1,5 @@
 ---
 title: Changelog
-prev: v2.0.0/api
-next: v2.0.0/known-issues
+prev_doc: v2.0.0/api
+next_doc: v2.0.0/known-issues
 ---

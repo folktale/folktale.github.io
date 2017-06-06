@@ -1,5 +1,5 @@
 ---
 title: Migrating from Data.Maybe
-prev: v2.0.0/migrating/from-data.either
-next: v2.0.0/migrating/from-data.task
+prev_doc: v2.0.0/migrating/from-data.either
+next_doc: v2.0.0/migrating/from-data.task
 ---

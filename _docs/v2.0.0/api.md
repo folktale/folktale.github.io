@@ -1,5 +1,5 @@
 ---
 title: API reference
-prev: v2.0.0/getting-started
-next: v2.0.0/changelog
+prev_doc: v2.0.0/getting-started
+next_doc: v2.0.0/changelog
 ---

@@ -1,5 +1,5 @@
 ---
 title: Getting started
-prev: v2.0.0/download
-next: v2.0.0/api
+prev_doc: v2.0.0/download
+next_doc: v2.0.0/api
 ---

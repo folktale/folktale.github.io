@@ -1,5 +1,5 @@
 ---
 title: Contributing tests
-prev: v2.0.0/contributing/documentation
-next: v2.0.0/contributing/git-guidelines
+prev_doc: v2.0.0/contributing/documentation
+next_doc: v2.0.0/contributing/git-guidelines
 ---

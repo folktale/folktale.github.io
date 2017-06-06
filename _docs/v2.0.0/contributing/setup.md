@@ -1,7 +1,7 @@
 ---
 title: Setting up a development environment
-prev: v2.0.0/contributing
-next: v2.0.0/contributing/bugfixes
+prev_doc: v2.0.0/contributing
+next_doc: v2.0.0/contributing/bugfixes
 ---
 
 Configuring a development environment for Folktale is currently a little bit
