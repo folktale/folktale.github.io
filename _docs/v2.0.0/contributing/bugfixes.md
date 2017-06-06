@@ -1,5 +1,7 @@
 ---
 title: Contributing bugfixes
+prev_doc: v2.0.0/contributing/setup
+next_doc: v2.0.0/contributing/new-features
 ---
 
 While we do our best to write correct software, sometimes bugs will escape our tests and creep in. We really appreciate any contribution to fix these issues.

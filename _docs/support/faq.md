@@ -1,6 +1,8 @@
 ---
 title: Frequently Asked Questions
 group: support
+prev_doc: support
+next_doc: support/bugs
 ---
 
 This document provides answers to some common questions people have when using Folktale.

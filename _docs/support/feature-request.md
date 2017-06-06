@@ -1,6 +1,7 @@
 ---
 title: Requesting features
 group: support
+prev_doc: support/bugs
 ---
 
 Folktale doesn't do everything, so more often than not you'll find something

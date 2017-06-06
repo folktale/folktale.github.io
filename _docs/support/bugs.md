@@ -1,6 +1,8 @@
 ---
 title: Reporting issues
 group: support
+prev_doc: support/faq
+next_doc: support/feature-request
 ---
 
 Sometimes things don't work as well as they should, or we can't make them work

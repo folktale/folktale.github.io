@@ -1,6 +1,10 @@
 ---
 title: Contributing new features
+prev: v2.0.0/contributing/bugfixes
+next: v2.0.0/contributing/documentation
 ---
+
+This guide shows how you can propose the implementation of new features for Folktale.
 
 
 ## Contents

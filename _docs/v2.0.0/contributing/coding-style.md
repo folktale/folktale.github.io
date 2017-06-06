@@ -1,5 +1,7 @@
 ---
 title: Coding style
+prev_doc: v2.0.0/contributing/git-guidelines
+next_doc: v2.0.0/contributing/organisation
 ---
 
 > **TODO**

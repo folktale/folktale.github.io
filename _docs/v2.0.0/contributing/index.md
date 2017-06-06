@@ -1,6 +1,8 @@
 ---
 title: Contributing to Folktale
 permalink: /docs/v2.0.0/contributing/
+breadcrumb: [v2.0.0]
+next_doc: v2.0.0/contributing/setup
 ---
 
 Hi~☆! Thanks for the interest in contributing to Folktale! Your help is much appreciated, and this guide will give you some pointers on what you can do to make things go as smoothly as possible. Don't worry about making mistakes, though! These aren't hard rules, and we're here to help you on anything you need :)

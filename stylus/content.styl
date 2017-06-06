@@ -8,7 +8,7 @@ link() {
   }
 }
 
-content() {
+base-content() {
   .title {
     font-family: heading-font;
     color: wet-asphalt;
@@ -154,16 +154,17 @@ content() {
         margin-bottom: 0.6em;
         font-family: sans-font;
         display: block;
-        border-bottom: 1px  solid darken(clouds, 5%);
+        border-bottom: 1px solid darken(clouds, 5%);
       }
     }
 
     .warning {
       border-left-color: lighten(carrot, 50%);
-      background: lighten(sunflower, 90%)
+      background: lighten(sunflower, 90%);
 
       & > p:first-child > strong:first-child {
         color: lighten(carrot, 50%);
+        border-bottom: 1px solid lighten(sunflower, 80%);
       }
     }
 

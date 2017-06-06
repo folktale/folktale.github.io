@@ -12,7 +12,7 @@ body {
   display: block;
   max-width: 800px;
   margin: 2em auto;
-  content();
+  base-content();
 }
 
 .borderless {
@@ -63,8 +63,7 @@ body {
 
 
 .breadcrumbs {
-  position: relative;
-  top: 1.5em;
+  flex-grow: 1;
   font-size: 11px;
   font-family: sans-font;
   color: concrete;
@@ -134,10 +133,38 @@ body {
   }
 
   .content-panel {
-    flex-shrink: 1;
+    flex-grow: 1;
 
     .title::before {
       margin-left: 0px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-direction: row-reverse;
+      flex-wrap: nowrap;
+    }
+
+    .edit-this-page {
+      flex-grow: 0;
+      font-size: 0.7em;
+      text-align: right;
+      text-transform: uppercase;
+      font-family: sans-font;
+
+      a::after {
+        width: 16px;
+        height: 16px;
+        vertical-align: baseline;
+        display: inline-block;
+        background: url("../images/github-16.png") no-repeat center center;
+        margin-left: 0.5em;
+        content: " ";
+      }
+      
+      a {
+        link();
+      }
     }
   }
 }

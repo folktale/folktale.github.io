@@ -28,22 +28,43 @@ layout: page
     </aside>
 
     <div class="content-panel">
-      <div class="breadcrumbs">
-        {% unless page.breadcrumb.empty? %}
-          {% for link in page.breadcrumb %}
-            <span class="separator"> / </span>
-            {% if link.href %}
-              <a class="breadcrumb-item" href="{{ link.href }}">{{ link.text }}</a>
-            {% else %}
-              <span class="breadcrumb-item">{{ link.text }}</span>
-            {% endif %}
-          {% endfor %}
-        {% endunless %}
+      <div class="meta-row">
+        <div class="edit-this-page">
+          <a href="{{ page.github_root }}/edit/master/docs/{{ page.path }}">Improve this page</a>
+        </div>
+        <div class="breadcrumbs">
+          {% unless page.breadcrumb.empty? %}
+            {% for item in page.breadcrumb %}
+              {% assign item_url = item | prepend:"/docs/" | append:"/" %}
+              {% assign p = site.docs | where:"url", item_url | first %}
+              <span class="separator"> / </span>
+              <a class="breadcrumb-item" href="{{ item_url }}">{{ p.title }}</a>
+            {% endfor %}
+          {% endunless %}
+        </div>
       </div>
       <h2 class="title">{{ page.title }}</h2>
             
       <div class="content-area">
         {{ content | markdownify }}
+      </div>
+
+      <div class="page-navigation">
+        {% if page.prev_doc %}
+          {% assign prev_url = page.prev_doc | prepend: "/docs/" | append: "/" %}
+          {% assign prev_page = site.docs | where:"url", prev_url | first %}
+          <div class="page-navigation-prev">
+            <a href="{{ prev_url }}">{{ prev_page.title }}</a>
+          </div>
+        {% endif %}
+
+        {% if page.next_doc %}
+          {% assign next_url = page.next_doc | prepend: "/docs/" | append: "/" %}
+          {% assign next_page = site.docs | where:"url", next_url | first %}
+          <div class="page-navigation-next">
+            <a href="{{ next_url }}">{{ next_page.title }}</a>
+          </div>              
+        {% endif %}
       </div>
     </div>
   </div>

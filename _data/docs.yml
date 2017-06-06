@@ -1,7 +1,8 @@
-- title: Folktale 2.0.0 docs
+- title: Folktale 2.0.0
   entry: v2.0.0
   docs:
     - v2.0.0/release-notes
+    - v2.0.0/download
     - v2.0.0/getting-started
     - v2.0.0/api
     - v2.0.0/changelog
@@ -40,6 +41,7 @@
   docs:
     - v2.0.0/misc/stability-index
     - v2.0.0/misc/design-principles
+    - v2.0.0/misc/type-notation
 
 - title: Legacy
   docs:

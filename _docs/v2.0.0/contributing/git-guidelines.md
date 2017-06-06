@@ -1,5 +1,7 @@
 ---
 title: Git commit guidelines
+prev_doc: v2.0.0/contributing/tests
+next_doc: v2.0.0/contributing/coding-style
 ---
 
 Folktale uses [.gitlabels](https://github.com/ELLIOTTCABLE/.gitlabels) to
