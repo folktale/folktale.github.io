@@ -6,7 +6,7 @@ navigation:
     url: /index.html
     group: home
   - text: Documentation
-    url: http://docs.folktalejs.org
+    url: http://folktalegithubio.readthedocs.io/en/latest/
     group: docs
   - text: Community
     url: /community/index.html
